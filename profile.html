@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Профиль пользователя - Smart Bookshelf">
+    <title>Профиль - Smart Bookshelf</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages/profile.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header__progress" id="scrollProgress"></div>
+        <div class="container header__container">
+            <a href="index.html" class="header__logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="8" fill="black"/>
+                    <path d="M8 12h16M8 16h16M8 20h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>Smart Bookshelf</span>
+            </a>
+
+            <nav class="header__nav">
+                <a href="index.html" class="header__nav-link">Главная</a>
+                <a href="catalog.html" class="header__nav-link">Каталог</a>
+                <a href="blog.html" class="header__nav-link">Блог</a>
+                <a href="about.html" class="header__nav-link">Подробнее</a>
+            </nav>
+
+            <div class="header__actions">
+                <div class="header__search">
+                    <svg class="header__search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                    <input type="text" class="header__search-input" placeholder="Поиск книг...">
+                </div>
+
+                <button class="header__icon-btn" aria-label="Избранное">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                </button>
+
+                <a href="cart.html" class="header__icon-btn" aria-label="Корзина">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    <span class="header__cart-badge">3</span>
+                </a>
+
+                <a href="profile.html" class="header__icon-btn" aria-label="Профиль">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                </a>
+
+                <button class="header__mobile-menu header__icon-btn" id="mobileMenuBtn" aria-label="Меню">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-menu__nav">
+            <a href="index.html" class="mobile-menu__link">Главная</a>
+            <a href="catalog.html" class="mobile-menu__link">Каталог</a>
+            <a href="blog.html" class="mobile-menu__link">Блог</a>
+            <a href="about.html" class="mobile-menu__link">Подробнее</a>
+            <a href="profile.html" class="mobile-menu__link">Профиль</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="profile-page">
+        <div class="container">
+            <!-- Breadcrumbs -->
+            <nav class="breadcrumbs">
+                <div class="breadcrumbs__item">
+                    <a href="index.html" class="breadcrumbs__link">Главная</a>
+                    <span class="breadcrumbs__separator">/</span>
+                </div>
+                <div class="breadcrumbs__item">
+                    <span>Профиль</span>
+                </div>
+            </nav>
+
+            <h1 class="profile-page__title">Мой профиль</h1>
+
+            <!-- Profile Tabs -->
+            <div class="profile-tabs">
+                <button class="profile-tab active" data-tab="info">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                    <span>Личные данные</span>
+                </button>
+                <button class="profile-tab" data-tab="orders">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    </svg>
+                    <span>Мои заказы</span>
+                </button>
+                <button class="profile-tab" data-tab="wishlist">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                    <span>Избранное</span>
+                </button>
+                <button class="profile-tab" data-tab="settings">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <span>Настройки</span>
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="profile-content">
+                <!-- Personal Info Tab -->
+                <div class="profile-tab-content active" id="info">
+                    <div class="profile-card">
+                        <div class="profile-card__header">
+                            <h2>Личная информация</h2>
+                            <button class="btn btn--outline btn--sm" id="editProfileBtn">Редактировать</button>
+                        </div>
+                        <form class="profile-form" id="profileForm">
+                            <div class="profile-form__row">
+                                <div class="input-group">
+                                    <label class="input-label">Имя</label>
+                                    <input type="text" class="input" value="Иван" disabled>
+                                </div>
+                                <div class="input-group">
+                                    <label class="input-label">Фамилия</label>
+                                    <input type="text" class="input" value="Иванов" disabled>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">Email</label>
+                                <input type="email" class="input" value="ivan@example.com" disabled>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">Телефон</label>
+                                <input type="tel" class="input" value="+7 (700) 123-45-67" disabled>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">Адрес доставки</label>
+                                <textarea class="input" rows="3" disabled>г. Алматы, ул. Абая 150, кв. 25</textarea>
+                            </div>
+                            <div class="profile-form__actions" style="display: none;">
+                                <button type="submit" class="btn btn--primary">Сохранить изменения</button>
+                                <button type="button" class="btn btn--outline" id="cancelEditBtn">Отмена</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Orders Tab -->
+                <div class="profile-tab-content" id="orders">
+                    <div class="profile-card">
+                        <h2>История заказов</h2>
+                        <div class="orders-list">
+                            <!-- Orders will be dynamically rendered here by profile.js -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wishlist Tab -->
+                <div class="profile-tab-content" id="wishlist">
+                    <div class="profile-card">
+                        <h2>Избранные книги</h2>
+                        <div class="grid grid--4">
+                            <article class="product-card">
+                                <div class="product-card__image-wrapper">
+                                    <button class="product-card__wishlist" aria-label="Удалить из избранного">
+                                        <svg width="20" height="20" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                        </svg>
+                                    </button>
+                                    <img src="images/book-barren-lives.png" alt="Barren Lives" class="product-card__image">
+                                </div>
+                                <div class="product-card__content">
+                                    <h3 class="product-card__title">Barren Lives</h3>
+                                    <p class="product-card__author">Graciliano Ramos</p>
+                                    <div class="product-card__footer">
+                                        <span class="product-card__price">$32.00</span>
+                                        <button class="product-card__add-btn" aria-label="Добавить в корзину">
+                                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div class="profile-tab-content" id="settings">
+                    <div class="profile-card">
+                        <h2>Настройки аккаунта</h2>
+                        <form class="profile-form">
+                            <h3 style="margin-bottom: var(--spacing-4);">Изменить пароль</h3>
+                            <div class="input-group">
+                                <label class="input-label">Текущий пароль</label>
+                                <input type="password" class="input" placeholder="Введите текущий пароль">
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">Новый пароль</label>
+                                <input type="password" class="input" placeholder="Введите новый пароль">
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">Подтвердите пароль</label>
+                                <input type="password" class="input" placeholder="Повторите новый пароль">
+                            </div>
+                            <button type="submit" class="btn btn--primary">Изменить пароль</button>
+                        </form>
+
+                        <hr style="margin: var(--spacing-8) 0; border: none; border-top: 1px solid var(--color-border);">
+
+                        <div>
+                            <h3 style="margin-bottom: var(--spacing-4);">Уведомления</h3>
+                            <div class="checkbox" style="margin-bottom: var(--spacing-3);">
+                                <input type="checkbox" class="checkbox__input" id="emailNotif" checked>
+                                <label class="checkbox__label" for="emailNotif">Email уведомления о новых акциях</label>
+                            </div>
+                            <div class="checkbox" style="margin-bottom: var(--spacing-3);">
+                                <input type="checkbox" class="checkbox__input" id="orderNotif" checked>
+                                <label class="checkbox__label" for="orderNotif">Уведомления о статусе заказа</label>
+                            </div>
+                            <div class="checkbox">
+                                <input type="checkbox" class="checkbox__input" id="newsNotif">
+                                <label class="checkbox__label" for="newsNotif">Новости и рекомендации</label>
+                            </div>
+                        </div>
+
+                        <hr style="margin: var(--spacing-8) 0; border: none; border-top: 1px solid var(--color-border);">
+
+                        <div>
+                            <h3 style="margin-bottom: var(--spacing-4); color: #ef4444;">Опасная зона</h3>
+                            <button class="btn btn--outline" style="border-color: #ef4444; color: #ef4444;">Удалить аккаунт</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__container">
+                <div class="footer__section">
+                    <h3 class="footer__section-title">Smart Bookshelf</h3>
+                    <p style="color: var(--color-gray-300); margin-top: var(--spacing-4);">
+                        Ваш надежный партнер в мире книг. Доставка по всему Казахстану.
+                    </p>
+                </div>
+
+                <div class="footer__section">
+                    <h3 class="footer__section-title">Покупателям</h3>
+                    <nav class="footer__links">
+                        <a href="#" class="footer__link">Как сделать заказ</a>
+                        <a href="#" class="footer__link">Способы оплаты</a>
+                        <a href="#" class="footer__link">Доставка</a>
+                        <a href="#" class="footer__link">Возврат товара</a>
+                    </nav>
+                </div>
+
+                <div class="footer__section">
+                    <h3 class="footer__section-title">Компания</h3>
+                    <nav class="footer__links">
+                        <a href="#" class="footer__link">О нас</a>
+                        <a href="#" class="footer__link">Контакты</a>
+                        <a href="#" class="footer__link">Вакансии</a>
+                        <a href="#" class="footer__link">Блог</a>
+                    </nav>
+                </div>
+
+                <div class="footer__section">
+                    <h3 class="footer__section-title">Контакты</h3>
+                    <nav class="footer__links">
+                        <a href="tel:+77001234567" class="footer__link">+7 (700) 123-45-67</a>
+                        <a href="mailto:info@bookshelf.kz" class="footer__link">info@bookshelf.kz</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2026 Smart Bookshelf. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

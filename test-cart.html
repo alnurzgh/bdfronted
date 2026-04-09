@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #333;
+        }
+        #output {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тест корзины</h1>
+    
+    <div class="test-section">
+        <h2>Управление корзиной</h2>
+        <button onclick="addTestItem()">Добавить тестовый товар</button>
+        <button onclick="showCart()">Показать корзину</button>
+        <button onclick="clearCart()">Очистить корзину</button>
+        <button onclick="clearLocalStorage()">Очистить localStorage</button>
+        <button onclick="goToCart()">Перейти в корзину</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Информация</h2>
+        <div id="output">Нажмите "Показать корзину" для просмотра</div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        function addTestItem() {
+            const testProduct = {
+                id: Date.now(),
+                title: "Test Book " + Math.floor(Math.random() * 1000),
+                author: "Test Author",
+                price: 25.99,
+                image: "images/v93_70.png",
+                quantity: 1
+            };
+            
+            cart.addItem(testProduct);
+            showCart();
+        }
+        
+        function showCart() {
+            const output = document.getElementById('output');
+            output.textContent = JSON.stringify({
+                itemCount: cart.getItemCount(),
+                total: cart.getTotal(),
+                items: cart.items
+            }, null, 2);
+        }
+        
+        function clearCart() {
+            cart.clearCart();
+            showCart();
+        }
+        
+        function clearLocalStorage() {
+            localStorage.clear();
+            alert('localStorage очищен! Перезагрузите страницу.');
+            location.reload();
+        }
+        
+        function goToCart() {
+            window.location.href = 'cart.html';
+        }
+        
+        // Show cart on load
+        window.addEventListener('load', () => {
+            showCart();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; }
+  .page { max-width: 580px; margin: 0 auto; background: #fff; }
+
+  .hero {
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    min-height: 220px;
+    position: relative;
+    margin: 12px;
+  }
+  .hero-left {
+    padding: 24px 20px;
+    flex: 1.2;
+    z-index: 2;
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 4px;
+  }
+  .hero-subtitle {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .hero-desc {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+    margin-bottom: 18px;
+    max-width: 200px;
+  }
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    color: #111;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 9px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+  }
+  .hero-right {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.75);
+  }
+  .hero-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-img-placeholder svg { opacity: 0.2; }
+
+  .features {
+    display: flex;
+    gap: 0;
+    padding: 16px 12px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .feature-item {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0 12px;
+    border-right: 1px solid #f0f0f0;
+  }
+  .feature-item:last-child { border-right: none; }
+  .feature-icon {
+    font-size: 16px;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+  .feature-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 3px;
+  }
+  .feature-text {
+    font-size: 10.5px;
+    color: #888;
+    line-height: 1.45;
+  }
+
+  .section { padding: 20px 12px 0; }
+  .section-title { font-size: 18px; font-weight: 700; color: #111; margin-bottom: 4px; }
+  .section-desc { font-size: 12px; color: #888; margin-bottom: 16px; line-height: 1.5; }
+
+  .genre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .genre-btn {
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .popular-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .popular-title { font-size: 18px; font-weight: 700; color: #111; }
+  .popular-link { font-size: 12px; color: #111; text-decoration: none; display: flex; align-items: center; gap: 4px; }
+
+  .books-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    padding-bottom: 20px;
+  }
+  .book-card { cursor: pointer; }
+  .book-cover {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 7px;
+    background: #eee;
+  }
+  .book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .book-title { font-size: 11.5px; font-weight: 600; color: #111; margin-bottom: 2px; line-height: 1.3; }
+  .book-price { font-size: 11px; color: #555; }
+
+  .cover-1 { background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); display:flex; align-items:center; justify-content:center; }
+  .cover-2 { background: linear-gradient(160deg, #f5f0e8 0%, #e8dcc8 100%); display:flex; align-items:center; justify-content:center; }
+  .cover-3 { background: linear-gradient(160deg, #2c3e50 0%, #3498db 100%); display:flex; align-items:center; justify-content:center; }
+  .cover-4 { background: linear-gradient(160deg, #1a1a1a 0%, #333 100%); display:flex; align-items:center; justify-content:center; }
+
+  .cover-text { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.9); text-align: center; padding: 6px; line-height: 1.3; }
+  .cover-text-dark { color: rgba(0,0,0,0.6); }
+</style>
+
+<div class="page">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">Назад в школу</div>
+      <div class="hero-title">Скидка<br>50%</div>
+      <div class="hero-subtitle">для студентов и школьников</div>
+      <div class="hero-desc">Тысячи книг по выгодным ценам. Классика, Фантастика, Драма — найдите то, что вдохновит вас на великие дела.</div>
+      <button class="hero-btn">Получить скидку →</button>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-placeholder">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <rect x="10" y="20" width="18" height="40" rx="2" fill="white"/>
+          <rect x="31" y="15" width="18" height="45" rx="2" fill="white"/>
+          <rect x="52" y="22" width="18" height="38" rx="2" fill="white"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feature-item">
+      <div class="feature-icon">⚡</div>
+      <div>
+        <div class="feature-title">Быстрая доставка</div>
+        <div class="feature-text">Доставим вашу книгу за 1–3 дня в любую точку России.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🔒</div>
+      <div>
+        <div class="feature-title">Безопасная оплата</div>
+        <div class="feature-text">Оплата картой, по QR-коду или наложенным платежом.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">👍</div>
+      <div>
+        <div class="feature-title">Лучшее качество</div>
+        <div class="feature-text">Только оригинальные издания от проверенных поставщиков.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Рекомендуем для вас</div>
+    <div class="section-desc">Выбирайте из тысяч книг в разных жанрах — от мировой классики до современной фантастики и захватывающей драмы.</div>
+    <div class="genre-grid">
+      <button class="genre-btn">Классика</button>
+      <button class="genre-btn">Фантастика</button>
+      <button class="genre-btn">Драма</button>
+    </div>
+
+    <div class="popular-header">
+      <div class="popular-title">Популярное в 2024</div>
+      <a class="popular-link" href="#">Смотреть все →</a>
+    </div>
+    <div class="books-grid">
+      <div class="book-card">
+        <div class="book-cover cover-1">
+          <div class="cover-text">Цветы для Элджернона</div>
+        </div>
+        <div class="book-title">Цветы для Элджернона</div>
+        <div class="book-price">480 р</div>
+      </div>
+      <div class="book-card">
+        <div class="book-cover cover-2">
+          <div class="cover-text cover-text-dark" style="color:rgba(0,0,0,0.55)">Мастер и Маргарита</div>
+        </div>
+        <div class="book-title">Мастер и Маргарита</div>
+        <div class="book-price">850 р</div>
+      </div>
+      <div class="book-card">
+        <div class="book-cover cover-3">
+          <div class="cover-text" style="font-size:22px; font-weight:900;">1984</div>
+        </div>
+        <div class="book-title">1984</div>
+        <div class="book-price">540 р</div>
+      </div>
+      <div class="book-card">
+        <div class="book-cover cover-4">
+          <div class="cover-text" style="font-size:9.5px;">Преступление и наказание</div>
+        </div>
+        <div class="book-title">Преступление и наказание</div>
+        <div class="book-price">620 р</div>
+      </div>
+    </div>
+  </div>
+</div>
