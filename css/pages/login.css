@@ -1,0 +1,474 @@
+/* Login Page with Book Animation */
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  position: relative;
+  overflow: hidden;
+  transition: background 1s ease;
+}
+
+.login-page.book-opened {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+/* ============================================
+   LOGO IN CORNER
+   ============================================ */
+
+.login-logo {
+  position: fixed;
+  top: var(--spacing-6);
+  left: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  color: var(--color-white);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  text-decoration: none;
+  z-index: 100;
+  transition: all var(--transition-base);
+  opacity: 0.9;
+}
+
+.login-logo:hover {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.login-logo svg {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* ============================================
+   BOOK CONTAINER
+   ============================================ */
+
+.book-container {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+}
+
+.book-container:hover {
+  transform: scale(1.05);
+}
+
+.book-container.animating {
+  cursor: default;
+}
+
+.book-container.background {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5) translateY(-30%);
+  opacity: 0.15;
+  filter: blur(4px);
+  pointer-events: none;
+  z-index: 1;
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   BOOK IMAGES
+   ============================================ */
+
+.book-image {
+  max-width: 500px;
+  max-height: 60vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.book-image.closed {
+  opacity: 1;
+  transition: opacity 0.6s ease-out;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+}
+
+.book-image.open {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 20px 60px rgba(255, 215, 0, 0.3));
+}
+
+/* ============================================
+   CLICK HINT
+   ============================================ */
+
+.click-hint {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  opacity: 0.7;
+  animation: floatHint 2s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+
+.click-hint svg {
+  width: 24px;
+  height: 24px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.click-hint.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ============================================
+   AUTH FORM WRAPPER
+   ============================================ */
+
+.auth-form-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 20;
+  width: 100%;
+  max-width: 480px;
+  padding: 0 var(--spacing-4);
+  transition: opacity 0.3s ease;
+}
+
+.auth-form-wrapper.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ============================================
+   AUTH CARD
+   ============================================ */
+
+.auth-card {
+  background: var(--color-white);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-10);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.auth-card__header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.auth-card__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-2);
+  color: var(--color-black);
+}
+
+.auth-card__subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+   BACK TO BOOK BUTTON
+   ============================================ */
+
+.back-to-book {
+  position: absolute;
+  top: var(--spacing-6);
+  left: var(--spacing-6);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-gray-100);
+  border-radius: var(--radius-full);
+  color: var(--color-text-primary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.back-to-book:hover {
+  background: var(--color-gray-200);
+  transform: translateX(-4px);
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+
+.auth-form__options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-input .input {
+  padding-right: var(--spacing-12);
+}
+
+.password-toggle {
+  position: absolute;
+  right: var(--spacing-4);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+  border-radius: var(--radius-md);
+}
+
+.password-toggle:hover {
+  color: var(--color-text-primary);
+  background: var(--color-gray-100);
+}
+
+.auth-divider {
+  position: relative;
+  text-align: center;
+  margin: var(--spacing-6) 0;
+}
+
+.auth-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.auth-divider span {
+  position: relative;
+  display: inline-block;
+  padding: 0 var(--spacing-4);
+  background: var(--color-white);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.auth-social {
+  margin-bottom: var(--spacing-6);
+}
+
+.auth-card__footer {
+  text-align: center;
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.auth-link {
+  color: var(--color-black);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: opacity var(--transition-fast);
+}
+
+.auth-link:hover {
+  opacity: 0.7;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Book Opening Animation */
+@keyframes openBook {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Glow Pulse Animation */
+@keyframes glowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 20px 60px rgba(255, 215, 0, 0.4)) brightness(1);
+  }
+  50% {
+    filter: drop-shadow(0 20px 80px rgba(255, 215, 0, 0.8)) brightness(1.15);
+  }
+}
+
+/* Form Fade In Up */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Float Hint Animation */
+@keyframes floatHint {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .book-image {
+    max-width: 400px;
+    max-height: 55vh;
+  }
+  
+  .auth-card {
+    padding: var(--spacing-8);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .book-image {
+    max-width: 320px;
+    max-height: 50vh;
+  }
+  
+  .book-container.background {
+    transform: translate(-50%, -50%) scale(0.4) translateY(-40%);
+  }
+  
+  .auth-card {
+    padding: var(--spacing-6);
+  }
+  
+  .auth-card__title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .login-logo {
+    font-size: var(--font-size-base);
+    top: var(--spacing-4);
+    left: var(--spacing-4);
+  }
+  
+  .login-logo svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .click-hint {
+    bottom: -60px;
+    font-size: var(--font-size-xs);
+  }
+  
+  .back-to-book {
+    width: 36px;
+    height: 36px;
+    top: var(--spacing-4);
+    left: var(--spacing-4);
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .book-image {
+    max-width: 280px;
+    max-height: 45vh;
+  }
+  
+  .auth-form-wrapper {
+    max-width: 100%;
+  }
+  
+  .auth-card {
+    padding: var(--spacing-5);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .book-container,
+  .book-image,
+  .auth-form-wrapper,
+  .click-hint {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .book-container:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .login-page {
+    background: #000000;
+  }
+  
+  .auth-card {
+    border: 2px solid var(--color-black);
+  }
+}
