@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Сага о Форсайтах - Джон Голсуорси">
+    <title>Сага о Форсайтах - Smart Bookshelf</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages/product.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header__progress" id="scrollProgress"></div>
+        <div class="container header__container">
+            <a href="../index.html" class="header__logo">
+                <img src="../logo/image.png" alt="Smart Bookshelf Logo" class="header__logo-img">
+                <span>Smart Bookshelf</span>
+            </a>
+
+            <nav class="header__nav">
+                <a href="../index.html" class="header__nav-link">Главная</a>
+                <a href="../catalog.html" class="header__nav-link">Каталог</a>
+                <a href="../blog.html" class="header__nav-link">Блог</a>
+                <a href="../about.html" class="header__nav-link">Подробнее</a>
+            </nav>
+
+            <div class="header__actions">
+                <div class="header__search">
+                    <svg class="header__search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                    <input type="text" class="header__search-input" placeholder="Поиск книг...">
+                </div>
+
+                <a href="../wishlist.html" class="header__icon-btn" aria-label="Избранное">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                </a>
+
+                <a href="../cart.html" class="header__icon-btn" aria-label="Корзина">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    <span class="header__cart-badge">3</span>
+                </a>
+
+                <a href="../profile.html" class="header__icon-btn" aria-label="Профиль">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                </a>
+
+                <button class="header__mobile-menu header__icon-btn" id="mobileMenuBtn" aria-label="Меню">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-menu__nav">
+            <a href="../index.html" class="mobile-menu__link">Главная</a>
+            <a href="../catalog.html" class="mobile-menu__link">Каталог</a>
+            <a href="../blog.html" class="mobile-menu__link">Блог</a>
+            <a href="../about.html" class="mobile-menu__link">Подробнее</a>
+            <a href="../profile.html" class="mobile-menu__link">Профиль</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="product-page" data-product-id="19">
+        <div class="container">
+            <!-- Breadcrumbs -->
+            <nav class="breadcrumbs">
+                <div class="breadcrumbs__item">
+                    <a href="../index.html" class="breadcrumbs__link">Главная</a>
+                    <span class="breadcrumbs__separator">/</span>
+                </div>
+                <div class="breadcrumbs__item">
+                    <a href="../catalog.html" class="breadcrumbs__link">Каталог</a>
+                    <span class="breadcrumbs__separator">/</span>
+                </div>
+                <div class="breadcrumbs__item">
+                    <span>Сага о Форсайтах</span>
+                </div>
+            </nav>
+
+            <!-- Product Details -->
+            <div class="product-details">
+                <!-- Gallery -->
+                <div class="product-gallery">
+                    <div class="product-gallery__main">
+                        <img src="../newbooks/Сага о Форсайтах/image.png" alt="Сага о Форсайтах" id="mainImage">
+                        <button class="product-gallery__wishlist" aria-label="Добавить в избранное">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-gallery__thumbs">
+                        <button class="product-gallery__thumb active">
+                            <img src="../newbooks/Сага о Форсайтах/image.png" alt="Thumbnail 1">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="product-info">
+                    <div class="product-info__header">
+                        <div>
+                            <h1 class="product-info__title">Сумерки</h1>
+                            <p class="product-info__author">Автор: <a href="#">Стефани Майер</a></p>
+                        </div>
+                        <div class="product-info__rating">
+                            <div class="rating">
+                                <span class="rating__stars">⭐️⭐️⭐️⭐️⭐️</span>
+                                <span class="rating__count">(3 отзыва)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info__price-section">
+                        <div class="product-info__price">8 500 ₸</div>
+                        <div class="product-info__stock">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            В наличии
+                        </div>
+                    </div>
+
+                    <div class="product-info__actions">
+                        <div class="quantity-selector">
+                            <button class="quantity-selector__btn" id="decreaseQty" aria-label="Уменьшить количество">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+                                </svg>
+                            </button>
+                            <input type="number" class="quantity-selector__input" value="1" min="1" max="10" id="quantity">
+                            <button class="quantity-selector__btn" id="increaseQty" aria-label="Увеличить количество">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <button class="btn btn--primary btn--lg" id="addToCartBtn">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                            Добавить в корзину
+                        </button>
+                    </div>
+
+                    <div class="product-info__details">
+                        <h3>Детали</h3>
+                        <dl class="details-list">
+                            <dt>ISBN:</dt>
+                            <dd>978-5-17-061625-1</dd>
+                            
+                            <dt>Формат:</dt>
+                            <dd>70x90/16</dd>
+                            
+                            <dt>Страниц:</dt>
+                            <dd>352</dd>
+                            
+                            <dt>Размер:</dt>
+                            <dd>170х215 мм</dd>
+                            
+                            <dt>Язык:</dt>
+                            <dd>Русский язык</dd>
+                            
+                            <dt>Год издания:</dt>
+                            <dd>2021</dd>
+                        </dl>
+                    </div>
+
+                    <div class="product-info__shipping">
+                        <h3>Доставка</h3>
+                        <div class="shipping-calculator">
+                            <input type="text" class="input" placeholder="Введите почтовый индекс" id="zipCode">
+                            <button class="btn btn--outline" id="calculateShipping">Рассчитать</button>
+                        </div>
+                        <p class="shipping-info">Бесплатная доставка при заказе от 15 000 ₸</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs Section -->
+            <div class="product-tabs">
+                <div class="tabs">
+                    <button class="tabs__btn active" data-tab="description">Описание</button>
+                    <button class="tabs__btn" data-tab="author">Об авторе</button>
+                    <button class="tabs__btn" data-tab="reviews">Отзывы (3)</button>
+                </div>
+
+                <div class="tabs__content">
+                    <!-- Description Tab -->
+                    <div class="tabs__panel active" id="description">
+                        <h2>О книге</h2>
+                        <p>Первая книга знаменитой вампирской саги, изданной миллионными тиражами и возглавившая списки бестселлеров десяти стран. Книга, которая привела в восхищение молодежь не только англоязычных стран, но и Франции и Испании, Скандинавии, Японии и Китая! Литературный дебют, который критики сравнивают с "Интервью с вампиром" Энн Райс и "Теми, кто охотится ночью" Барбары Хэмбли! Влюбиться в вампира… Это страшно? Это романтично… Это прекрасно и мучительно… Но это не может кончиться добром - особенно в вечном противостоянии вампирских кланов, где малейшее отличие от окружающих уже превращает вас во врага…</p>
+                    </div>
+
+                    <!-- Author Tab -->
+                    <div class="tabs__panel" id="author">
+                        <h2>Стефани Майер</h2>
+                        <p>Стефани Майер — автор, изменившая мир подростковой литературы навсегда. Её имя прочно связано с вампирами, волками и любовью на грани смерти. Кто-то считает её книги наивными, кто-то — гениальными, но равнодушных точно нет. Благодаря Майер подростковое фэнтези обрело массовую популярность, а миллионы юных (и не только) читателей научились мечтать о бессмертной любви.</p>
+                        <p>Стефани Майер (в девичестве — Морган) родилась 24 декабря 1973 года в Хартфорде, штат Коннектикут, но выросла в Скоттсдейле, штат Аризона, в многодетной мормонской семье. С юности она была отличницей, тихой, замкнутой и погружённой в книги. Окончила Университет Бригама Янга, где изучала английскую филологию. После свадьбы с детской любовью, Кристианом Майером, она сосредоточилась на семье и воспитании детей — и долгое время даже не думала о писательстве.</p>
+                        <p>Всё изменилось летом 2003 года, когда ей приснился странный, яркий сон: девушка разговаривает с вампиром в солнечном поле. Этот образ не давал ей покоя, и, не имея никакого литературного опыта, Стефани начала писать. Через три месяца был готов черновик «Сумерек» — книги, которая вскоре взорвёт мир.</p>
+                    </div>
+
+                    <!-- Reviews Tab -->
+                    <div class="tabs__panel" id="reviews">
+                        <div class="reviews">
+                            <div class="reviews__summary">
+                                 <div class="reviews__rating">
+                                    <div class="reviews__rating-number">5.0</div>
+                                    <div class="reviews__rating-stars">⭐️⭐️⭐️⭐️⭐️</div>
+                                    <div class="reviews__rating-count">На основе 3 отзывов</div>
+                                </div>
+                                <button class="btn btn--primary" id="writeReviewBtn">Написать отзыв</button>
+                            </div>
+
+                            <div class="reviews__list">
+                                <!-- Review 1 -->
+                                <article class="review">
+                                    <div class="review__header">
+                                        <div class="review__avatar">ЧИ</div>
+                                        <div class="review__info">
+                                            <div class="review__author">Читатель</div>
+                                            <div class="review__rating">⭐️⭐️⭐️⭐️⭐️</div>
+                                            <div class="review__date">10 апреля 2026</div>
+                                        </div>
+                                    </div>
+                                    <div class="review__content">
+                                        <p class="review__text">Очень круто! Начал читать после фильмов и это просто нечто.</p>
+                                    </div>
+                                    <div class="review__footer">
+                                        <button class="review__helpful">Полезно (12)</button>
+                                    </div>
+                                </article>
+
+                                <!-- Review 2 -->
+                                <article class="review">
+                                    <div class="review__header">
+                                        <div class="review__avatar">ЧИ</div>
+                                        <div class="review__info">
+                                            <div class="review__author">Читатель</div>
+                                            <div class="review__rating">⭐️⭐️⭐️⭐️⭐️</div>
+                                            <div class="review__date">8 апреля 2026</div>
+                                        </div>
+                                    </div>
+                                    <div class="review__content">
+                                        <p class="review__text">Обычно я не читаю книги с пометкой «для подростков». Я взрослая, мне ещё далеко до юности (кроме как в душе!), и, за редким исключением, например, романов о Гарри Поттере и «Там, где растёт дикий папоротник», я читаю литературу для взрослых. К моему восторгу, Стефани Майер создала необыкновенную серию для подростков, которую я обожаю (!!) — «Сумерки». «Сумерки» — это также название первой книги. И какие же оригинальные и восхитительные романы — даже для тех, кто предпочитает более изысканную литературу. Я буквально не могла оторваться от первой книги… и начну читать вторую, «Новолуние», как только закончу писать этот отзыв. Поверьте, не зря издано более 10 миллионов книг серии «Сумерки». Они затягивают!</p>
+                                    </div>
+                                    <div class="review__footer">
+                                        <button class="review__helpful">Полезно (28)</button>
+                                    </div>
+                                </article>
+
+                                <!-- Review 3 -->
+                                <article class="review">
+                                    <div class="review__header">
+                                        <div class="review__avatar">ЧИ</div>
+                                        <div class="review__info">
+                                            <div class="review__author">Читатель</div>
+                                            <div class="review__rating">⭐️⭐️⭐️⭐️⭐️</div>
+                                            <div class="review__date">5 апреля 2026</div>
+                                        </div>
+                                    </div>
+                                    <div class="review__content">
+                                        <p class="review__text">Очень интересные книги. Я обычно не любитель подобного жанра, но конкретно эти книги очень сильно заинтересовали. С нетерпением буду ждать когда смогу заказать стальные части. Всем рекомендую к прочтению</p>
+                                    </div>
+                                    <div class="review__footer">
+                                        <button class="review__helpful">Полезно (15)</button>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <section class="section">
+                <h2 class="section__title">Вам также может понравиться</h2>
+                <div class="grid grid--4" id="relatedProducts">
+                    <!-- Products will be loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__container">
+                <div class="footer__section">
+                    <h3 class="footer__section-title">Smart Bookshelf</h3>
+                    <p style="color: var(--color-gray-300); margin-top: var(--spacing-4);">
+                        Ваш надежный партнер в мире книг. Доставка по всему Казахстану.
+                    </p>
+                </div>
+
+                <div class="footer__section">
+                    <h3 class="footer__section-title">Покупателям</h3>
+                    <nav class="footer__links">
+                        <a href="#" class="footer__link">Как сделать заказ</a>
+                        <a href="#" class="footer__link">Способы оплаты</a>
+                        <a href="#" class="footer__link">Доставка</a>
+                    </nav>
+                </div>
+
+                <div class="footer__section">
+                    <h3 class="footer__section-title">Компания</h3>
+                    <nav class="footer__links">
+                        <a href="#" class="footer__link">О нас</a>
+                        <a href="#" class="footer__link">Контакты</a>
+                        <a href="#" class="footer__link">Блог</a>
+                    </nav>
+                </div>
+
+                <div class="footer__section">
+                    <h3 class="footer__section-title">Контакты</h3>
+                    <nav class="footer__links">
+                        <a href="tel:+77001234567" class="footer__link">+7 (700) 123-45-67</a>
+                        <a href="mailto:info@bookshelf.kz" class="footer__link">info@bookshelf.kz</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2026 Smart Bookshelf. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/product.js"></script>
+</body>
+</html>
