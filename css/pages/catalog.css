@@ -76,6 +76,8 @@
   position: sticky;
   top: calc(var(--header-height) + var(--spacing-4));
   display: none;
+  max-height: calc(100vh - var(--header-height) - var(--spacing-8));
+  overflow-y: auto;
 }
 
 @media (min-width: 1024px) {
@@ -137,6 +139,18 @@
   flex-direction: column;
   gap: var(--spacing-3);
   margin-top: var(--spacing-6);
+}
+
+@media (max-width: 1023px) {
+  .filter-actions {
+    position: sticky;
+    bottom: 0;
+    background: var(--color-white);
+    padding: var(--spacing-4);
+    margin: 0 calc(-1 * var(--spacing-6));
+    margin-top: var(--spacing-6);
+    border-top: 1px solid var(--color-border);
+  }
 }
 
 /* Catalog Content */

@@ -1,211 +1,131 @@
-// Login Page - Book Animation JavaScript
+// ============================================
+// VIDEO LOGIN PAGE - JAVASCRIPT
+// ============================================
 
 // ============================================
 // DOM ELEMENTS
 // ============================================
 
-const bookContainer = document.getElementById('bookContainer');
-const closedBook = document.getElementById('closedBook');
-const openBook = document.getElementById('openBook');
-const clickHint = document.getElementById('clickHint');
-const authFormWrapper = document.getElementById('authFormWrapper');
-const backToBookBtn = document.getElementById('backToBook');
+const openingVideo = document.getElementById('openingVideo');
+const loopVideo = document.getElementById('loopVideo');
+const clickOverlay = document.getElementById('clickOverlay');
+const loginFormContainer = document.getElementById('loginFormContainer');
 const loginForm = document.getElementById('loginForm');
-const loginPage = document.querySelector('.login-page');
+const signupForm = document.getElementById('signupForm');
+const loginCard = document.getElementById('loginCard');
+const signupCard = document.getElementById('signupCard');
+const showSignupBtn = document.getElementById('showSignup');
+const showLoginBtn = document.getElementById('showLogin');
 
 // ============================================
 // STATE
 // ============================================
 
-let animationPlayed = false;
-let isAnimating = false;
+let hasStarted = false;
+let isVideoPlaying = false;
 
 // ============================================
-// UTILITY FUNCTIONS
+// INITIALIZATION
 // ============================================
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('🎬 Video Login Page initialized');
+  
+  // Check if mobile device
+  const isMobile = window.innerWidth <= 768;
+  
+  if (isMobile) {
+    // On mobile: show form immediately, no video
+    console.log('📱 Mobile device detected - showing form immediately');
+    if (loginFormContainer) {
+      loginFormContainer.classList.add('visible');
+    }
+    if (clickOverlay) {
+      clickOverlay.classList.add('hidden');
+    }
+  } else {
+    // On desktop: prepare videos
+    if (openingVideo) {
+      openingVideo.pause();
+      openingVideo.currentTime = 0;
+      console.log('📹 Opening video ready (paused)');
+    }
+    
+    // Preload loop video
+    if (loopVideo) {
+      loopVideo.load();
+      console.log('📹 Loop video preloaded');
+    }
+  }
+});
+
+// ============================================
+// CLICK TO START VIDEO
+// ============================================
+
+if (clickOverlay) {
+  clickOverlay.addEventListener('click', startVideoSequence);
 }
 
-// ============================================
-// ANIMATION SEQUENCE
-// ============================================
-
-async function playOpeningSequence() {
-  if (isAnimating) return;
-  isAnimating = true;
-  animationPlayed = true;
+async function startVideoSequence() {
+  if (hasStarted || !openingVideo) return;
   
-  // Disable click during animation
-  bookContainer.classList.add('animating');
-  bookContainer.style.cursor = 'default';
+  hasStarted = true;
+  isVideoPlaying = true;
+  
+  console.log('▶️ Starting video sequence...');
   
   try {
-    // Step 1: Hide click hint (0.3s)
-    await hideClickHint();
+    // Hide click overlay
+    clickOverlay.classList.add('hidden');
     
-    // Step 2: Open the book (1.5s)
-    await openBookAnimation();
+    // Start first video
+    await openingVideo.play();
+    console.log('▶️ Opening video playing');
     
-    // Step 3: Glow pulse effect (1s)
-    await glowAnimation();
-    
-    // Step 4: Move book to background and show form (0.8s)
-    await showAuthForm();
-    
-  } catch (error) {
-    console.error('Animation error:', error);
-  } finally {
-    isAnimating = false;
-  }
-}
-
-// Step 1: Hide Click Hint
-function hideClickHint() {
-  return new Promise(resolve => {
-    clickHint.classList.add('hidden');
-    setTimeout(resolve, 300);
-  });
-}
-
-// Step 2: Open Book Animation
-function openBookAnimation() {
-  return new Promise(resolve => {
-    // Fade out closed book
-    closedBook.style.opacity = '0';
-    
-    // Fade in open book with animation
+    // Show login form after 3.5 seconds (closer to end of video)
     setTimeout(() => {
-      openBook.style.opacity = '1';
-      openBook.style.animation = 'openBook 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
-    }, 100);
-    
-    // Change background
-    loginPage.classList.add('book-opened');
-    
-    setTimeout(resolve, 1500);
-  });
-}
-
-// Step 3: Glow Pulse Animation
-function glowAnimation() {
-  return new Promise(resolve => {
-    openBook.style.animation = 'glowPulse 1s ease-in-out';
-    setTimeout(resolve, 1000);
-  });
-}
-
-// Step 4: Show Auth Form
-function showAuthForm() {
-  return new Promise(resolve => {
-    // Move book to background
-    bookContainer.classList.add('background');
-    
-    // Show form with animation
-    authFormWrapper.classList.add('visible');
-    authFormWrapper.style.animation = 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-    
-    // Focus on first input after animation
-    setTimeout(() => {
-      const emailInput = document.getElementById('loginEmail');
-      if (emailInput) {
-        emailInput.focus();
+      if (loginFormContainer) {
+        loginFormContainer.classList.add('visible');
+        console.log('📝 Login form visible');
       }
-      resolve();
-    }, 800);
-  });
-}
-
-// ============================================
-// REVERSE ANIMATION (Back to Book)
-// ============================================
-
-async function backToBookAnimation() {
-  if (isAnimating) return;
-  isAnimating = true;
-  
-  try {
-    // Hide form
-    authFormWrapper.style.animation = 'fadeOut 0.5s ease-out';
-    await sleep(500);
-    authFormWrapper.classList.remove('visible');
-    
-    // Bring book back to center
-    bookContainer.classList.remove('background');
-    await sleep(300);
-    
-    // Reset state
-    animationPlayed = false;
-    bookContainer.classList.remove('animating');
-    bookContainer.style.cursor = 'pointer';
-    
-    // Show hint again
-    clickHint.classList.remove('hidden');
-    
-    // Reset animations
-    openBook.style.animation = '';
-    authFormWrapper.style.animation = '';
+    }, 3500);
     
   } catch (error) {
-    console.error('Back animation error:', error);
-  } finally {
-    isAnimating = false;
+    console.error('❌ Error playing video:', error);
+    // Fallback: show form immediately if video fails
+    if (loginFormContainer) {
+      loginFormContainer.classList.add('visible');
+    }
   }
 }
 
 // ============================================
-// EVENT LISTENERS
+// VIDEO ENDED - SWITCH TO LOOP VIDEO
 // ============================================
 
-// Click on book to start animation
-bookContainer.addEventListener('click', () => {
-  if (!animationPlayed && !isAnimating) {
-    playOpeningSequence();
-  }
-});
-
-// Hover effect on book (only when not animated)
-bookContainer.addEventListener('mouseenter', () => {
-  if (!animationPlayed && !isAnimating) {
-    bookContainer.style.transform = 'scale(1.05)';
-  }
-});
-
-bookContainer.addEventListener('mouseleave', () => {
-  if (!animationPlayed && !isAnimating) {
-    bookContainer.style.transform = 'scale(1)';
-  }
-});
-
-// Back to book button
-if (backToBookBtn) {
-  backToBookBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    backToBookAnimation();
+if (openingVideo) {
+  openingVideo.addEventListener('ended', () => {
+    console.log('✅ Opening video ended, switching to loop video...');
+    switchToLoopVideo();
   });
 }
 
-// ESC key to go back
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && authFormWrapper.classList.contains('visible')) {
-    backToBookAnimation();
+async function switchToLoopVideo() {
+  if (!loopVideo || !openingVideo) return;
+  
+  try {
+    // Immediately hide opening video and show loop video (no fade)
+    openingVideo.classList.remove('active');
+    loopVideo.classList.add('active');
+    await loopVideo.play();
+    
+    console.log('🔁 Loop video playing (infinite loop)');
+    isVideoPlaying = false;
+    
+  } catch (error) {
+    console.error('❌ Error switching to loop video:', error);
   }
-});
-
-// ============================================
-// PASSWORD TOGGLE
-// ============================================
-
-const passwordToggle = document.querySelector('.password-toggle');
-const passwordInput = document.getElementById('loginPassword');
-
-if (passwordToggle && passwordInput) {
-  passwordToggle.addEventListener('click', () => {
-    const type = passwordInput.type === 'password' ? 'text' : 'password';
-    passwordInput.type = type;
-    passwordToggle.style.opacity = type === 'text' ? '1' : '0.6';
-  });
 }
 
 // ============================================
@@ -213,46 +133,145 @@ if (passwordToggle && passwordInput) {
 // ============================================
 
 if (loginForm) {
-  loginForm.addEventListener('submit', async (e) => {
+  loginForm.addEventListener('submit', handleLogin);
+}
+
+async function handleLogin(e) {
+  e.preventDefault();
+  
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value.trim();
+  
+  // Basic validation
+  if (!username || !password) {
+    showNotification('Please fill in all fields', 'error');
+    return;
+  }
+  
+  if (username.length < 2) {
+    showNotification('Username must be at least 2 characters', 'error');
+    return;
+  }
+  
+  if (password.length < 4) {
+    showNotification('Password must be at least 4 characters', 'error');
+    return;
+  }
+  
+  // Get submit button
+  const submitBtn = loginForm.querySelector('.btn-signin');
+  const originalText = submitBtn.textContent;
+  
+  // Show loading state
+  submitBtn.textContent = 'Signing In...';
+  submitBtn.disabled = true;
+  
+  console.log('🔐 Attempting login...', { username });
+  
+  // Simulate login (replace with actual API call)
+  await sleep(1500);
+  
+  // Success
+  showNotification('Welcome back!', 'success');
+  
+  // Redirect after short delay
+  setTimeout(() => {
+    console.log('✅ Login successful, redirecting...');
+    window.location.href = 'index.html';
+  }, 1000);
+}
+
+// ============================================
+// FORM SWITCHING (LOGIN <-> SIGNUP)
+// ============================================
+
+if (showSignupBtn) {
+  showSignupBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-    const rememberMe = document.getElementById('rememberMe').checked;
-    
-    // Basic validation
-    if (!email || !password) {
-      showNotification('Пожалуйста, заполните все поля', 'error');
-      return;
-    }
-    
-    if (!validateEmail(email)) {
-      showNotification('Пожалуйста, введите корректный email', 'error');
-      return;
-    }
-    
-    // Show loading state
-    const submitBtn = loginForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Вход...';
-    submitBtn.disabled = true;
-    
-    // Simulate login (replace with actual API call)
-    await sleep(1500);
-    
-    // Save to localStorage if remember me is checked
-    if (rememberMe) {
-      localStorage.setItem('userEmail', email);
-    }
-    
-    // Show success notification
-    showNotification('Вход выполнен успешно!', 'success');
-    
-    // Redirect to profile page
-    setTimeout(() => {
-      window.location.href = 'profile.html';
-    }, 1000);
+    switchToSignup();
   });
+}
+
+if (showLoginBtn) {
+  showLoginBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    switchToLogin();
+  });
+}
+
+function switchToSignup() {
+  if (loginCard && signupCard) {
+    loginCard.classList.remove('active');
+    signupCard.classList.add('active');
+    console.log('📝 Switched to signup form');
+  }
+}
+
+function switchToLogin() {
+  if (loginCard && signupCard) {
+    signupCard.classList.remove('active');
+    loginCard.classList.add('active');
+    console.log('📝 Switched to login form');
+  }
+}
+
+// ============================================
+// SIGNUP FORM SUBMISSION
+// ============================================
+
+if (signupForm) {
+  signupForm.addEventListener('submit', handleSignup);
+}
+
+async function handleSignup(e) {
+  e.preventDefault();
+  
+  const username = document.getElementById('signupUsername').value.trim();
+  const email = document.getElementById('signupEmail').value.trim();
+  const password = document.getElementById('signupPassword').value.trim();
+  
+  // Basic validation
+  if (!username || !email || !password) {
+    showNotification('Please fill in all fields', 'error');
+    return;
+  }
+  
+  if (username.length < 2) {
+    showNotification('Username must be at least 2 characters', 'error');
+    return;
+  }
+  
+  if (!validateEmail(email)) {
+    showNotification('Please enter a valid email', 'error');
+    return;
+  }
+  
+  if (password.length < 4) {
+    showNotification('Password must be at least 4 characters', 'error');
+    return;
+  }
+  
+  // Get submit button
+  const submitBtn = signupForm.querySelector('.btn-signin');
+  const originalText = submitBtn.textContent;
+  
+  // Show loading state
+  submitBtn.textContent = 'Creating Account...';
+  submitBtn.disabled = true;
+  
+  console.log('🔐 Creating account...', { username, email });
+  
+  // Simulate signup (replace with actual API call)
+  await sleep(1500);
+  
+  // Success
+  showNotification('Account created successfully!', 'success');
+  
+  // Redirect after short delay
+  setTimeout(() => {
+    console.log('✅ Signup successful, redirecting...');
+    window.location.href = 'index.html';
+  }, 1000);
 }
 
 // ============================================
@@ -264,69 +283,83 @@ function validateEmail(email) {
   return re.test(email);
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// ============================================
+// NOTIFICATION SYSTEM
+// ============================================
+
 function showNotification(message, type = 'info') {
   const notification = document.createElement('div');
   notification.className = `notification notification--${type}`;
   notification.textContent = message;
+  
+  // Styles
+  const bgColors = {
+    error: '#ef4444',
+    success: '#10b981',
+    info: '#d4880a'
+  };
+  
   notification.style.cssText = `
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: ${type === 'error' ? '#ef4444' : type === 'success' ? '#10b981' : '#000000'};
+    bottom: 30px;
+    right: 30px;
+    background: ${bgColors[type] || bgColors.info};
     color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     z-index: 10000;
-    animation: slideInRight 0.3s ease-out;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
+    animation: slideInUp 0.3s ease-out;
+    max-width: 300px;
   `;
   
   document.body.appendChild(notification);
   
+  // Auto remove after 3 seconds
   setTimeout(() => {
-    notification.style.animation = 'slideOutRight 0.3s ease-out';
+    notification.style.animation = 'slideOutDown 0.3s ease-out';
     setTimeout(() => notification.remove(), 300);
   }, 3000);
 }
 
 // ============================================
-// ADDITIONAL ANIMATIONS
+// UTILITY FUNCTIONS
 // ============================================
 
-// Add fadeOut animation dynamically
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// ============================================
+// ANIMATIONS
+// ============================================
+
 const style = document.createElement('style');
 style.textContent = `
-  @keyframes fadeOut {
+  @keyframes slideInUp {
     from {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-    to {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.95);
-    }
-  }
-  
-  @keyframes slideInRight {
-    from {
-      transform: translateX(100%);
+      transform: translateY(100%);
       opacity: 0;
     }
     to {
-      transform: translateX(0);
+      transform: translateY(0);
       opacity: 1;
     }
   }
   
-  @keyframes slideOutRight {
+  @keyframes slideOutDown {
     from {
-      transform: translateX(0);
+      transform: translateY(0);
       opacity: 1;
     }
     to {
-      transform: translateX(100%);
+      transform: translateY(100%);
       opacity: 0;
     }
   }
@@ -334,15 +367,66 @@ style.textContent = `
 document.head.appendChild(style);
 
 // ============================================
-// INITIALIZATION
+// KEYBOARD SHORTCUTS
 // ============================================
 
-console.log('Login page initialized');
-console.log('Click on the book to start the animation');
+document.addEventListener('keydown', (e) => {
+  // Press Space or Enter to start video (if not started)
+  if ((e.code === 'Space' || e.code === 'Enter') && !hasStarted) {
+    e.preventDefault();
+    startVideoSequence();
+  }
+});
 
-// Optional: Auto-play animation after 2 seconds (uncomment if needed)
-// setTimeout(() => {
-//   if (!animationPlayed) {
-//     playOpeningSequence();
-//   }
-// }, 2000);
+// ============================================
+// ERROR HANDLING
+// ============================================
+
+// Handle video errors
+if (openingVideo) {
+  openingVideo.addEventListener('error', (e) => {
+    console.error('❌ Opening video error:', e);
+    showNotification('Video failed to load', 'error');
+    // Show form anyway
+    if (loginFormContainer) {
+      loginFormContainer.classList.add('visible');
+    }
+  });
+}
+
+if (loopVideo) {
+  loopVideo.addEventListener('error', (e) => {
+    console.error('❌ Loop video error:', e);
+  });
+}
+
+// ============================================
+// ACCESSIBILITY
+// ============================================
+
+// Announce to screen readers when form appears
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.target === loginFormContainer && 
+        loginFormContainer.classList.contains('visible')) {
+      const announcement = document.createElement('div');
+      announcement.setAttribute('role', 'status');
+      announcement.setAttribute('aria-live', 'polite');
+      announcement.className = 'sr-only';
+      announcement.textContent = 'Login form is now visible';
+      document.body.appendChild(announcement);
+      setTimeout(() => announcement.remove(), 1000);
+    }
+  });
+});
+
+if (loginFormContainer) {
+  observer.observe(loginFormContainer, { attributes: true, attributeFilter: ['class'] });
+}
+
+// ============================================
+// INITIALIZATION LOG
+// ============================================
+
+console.log('✨ Video Login Page ready');
+console.log('👆 Click anywhere to start the experience');

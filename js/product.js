@@ -3,346 +3,885 @@
 // Mock product data (same as catalog.js)
 const products = [
   {
-    id: 1,
-    title: "Until August",
-    author: "Gabriel García Márquez",
-    price: 23.00,
-    category: "fiction",
-    rating: 5,
-    image: "images/v93_62.png",
-    inStock: true,
-    isNew: true,
-    isbn: "978-0-307-47329-9",
-    pages: 112,
-    publisher: "Knopf",
-    year: 2024,
-    description: "A posthumous novel by Gabriel García Márquez, discovered among his papers after his death. The story follows Ana Magdalena Bach, a middle-aged woman who embarks on a series of clandestine affairs during her annual August visits to a Caribbean island. Written in Márquez's signature magical realism style, this intimate novella explores themes of desire, freedom, and the complexity of human relationships.",
-    authorBio: "Gabriel García Márquez (1927-2014) was a Colombian novelist, short-story writer, and journalist, known affectionately as Gabo throughout Latin America. He was awarded the Nobel Prize in Literature in 1982. His works, including 'One Hundred Years of Solitude' and 'Love in the Time of Cholera', are considered masterpieces of magical realism.",
-    reviews: [
-      { author: "Мария Петрова", rating: 5, date: "20 марта 2026", title: "Последний подарок от мастера", text: "Невероятно трогательная и честная книга. Márquez до последнего оставался великим писателем." },
-      { author: "Алексей Иванов", rating: 5, date: "15 марта 2026", title: "Магический реализм в лучшем виде", text: "Короткая, но очень глубокая история о женской свободе и желаниях." }
-    ]
+    "id": 1,
+    "title": "Until August",
+    "author": "Gabriel García Márquez",
+    "price": 23,
+    "category": "fiction",
+    "genre": "literary-fiction",
+    "rating": 5,
+    "image": "images/v93_62.png",
+    "inStock": true,
+    "isNew": true
   },
   {
-    id: 2,
-    title: "Barren Lives",
-    author: "Graciliano Ramos",
-    price: 32.00,
-    category: "fiction",
-    rating: 4,
-    image: "images/v93_66.png",
-    inStock: true,
-    isNew: false,
-    isbn: "978-0-292-70182-7",
-    pages: 128,
-    publisher: "University of Texas Press",
-    year: 2023,
-    description: "A powerful novel about a family struggling to survive in the harsh Brazilian sertão. Fabiano, his wife Vitória, their two sons, and their dog Baleia face drought, poverty, and exploitation. Ramos's sparse, poetic prose captures the brutal reality of rural poverty while maintaining deep humanity and compassion for his characters.",
-    authorBio: "Graciliano Ramos (1892-1953) was a Brazilian modernist writer, politician, and journalist. He is considered one of the greatest Brazilian writers of the 20th century. His works are known for their social realism and psychological depth, often depicting the harsh realities of life in northeastern Brazil.",
-    reviews: [
-      { author: "Ирина Соколова", rating: 5, date: "18 марта 2026", title: "Жестокая правда жизни", text: "Пронзительная книга о выживании. Ramos не приукрашивает реальность, но пишет с огромным состраданием." },
-      { author: "Павел Морозов", rating: 4, date: "12 марта 2026", title: "Сильная проза", text: "Тяжелая, но важная книга. Показывает реальность, о которой многие не знают." }
-    ]
+    "id": 2,
+    "title": "Barren Lives",
+    "author": "Graciliano Ramos",
+    "price": 32,
+    "category": "fiction",
+    "genre": "literary-fiction",
+    "rating": 4,
+    "image": "images/v93_66.png",
+    "inStock": true,
+    "isNew": false
   },
   {
-    id: 3,
-    title: "Dream Count",
-    author: "Chimamanda Ngozi Adichie",
-    price: 35.50,
-    category: "fiction",
-    rating: 5,
-    image: "images/v93_70.png",
-    inStock: true,
-    isNew: false,
-    isbn: "978-0-307-47330-5",
-    pages: 256,
-    publisher: "Knopf",
-    year: 2024,
-    description: "Dream Count is a deeply introspective novel exploring the complexities of love, identity, and self-reflection through the intertwined lives of four women. Chiamaka, a Nigerian travel writer living in America, confronts her past relationships and regrets during the isolation of the pandemic. Through vivid storytelling and emotional depth, Adichie weaves a narrative that examines the nature of desire, the weight of choices, and the search for meaning in modern life.",
-    authorBio: "Chimamanda Ngozi Adichie was born in Nigeria in 1977. She is the author of the novels Purple Hibiscus, Half of a Yellow Sun, and Americanah, and the short story collection The Thing Around Your Neck. Her work has been translated into over thirty languages and has won numerous awards, including the Orange Prize for Fiction and the National Book Critics Circle Award. She is also a prominent feminist and public speaker, known for her TED talks 'We Should All Be Feminists' and 'The Danger of a Single Story.'",
-    reviews: [
-      { author: "Анна Михайлова", rating: 5, date: "15 марта 2026", title: "Потрясающая книга!", text: "Адичи снова доказывает, что она мастер своего дела. Глубокая, трогательная история о женщинах, их выборе и последствиях. Читается на одном дыхании." },
-      { author: "Дмитрий Ковалев", rating: 4, date: "10 марта 2026", title: "Сильная проза", text: "Очень личная и честная книга. Адичи не боится затрагивать сложные темы. Местами тяжело читать, но это того стоит." }
-    ]
+    "id": 3,
+    "title": "Dream Count",
+    "author": "Chimamanda Ngozi Adichie",
+    "price": 35.5,
+    "category": "fiction",
+    "genre": "literary-fiction",
+    "rating": 5,
+    "image": "images/v93_70.png",
+    "inStock": true,
+    "isNew": false
   },
   {
-    id: 4,
-    title: "The Blue Hour",
-    author: "Paula Hawkins",
-    price: 17.50,
-    category: "fiction",
-    rating: 4,
-    image: "images/v93_74.png",
-    inStock: true,
-    isNew: false,
-    isbn: "978-0-385-54878-1",
-    pages: 320,
-    publisher: "Doubleday",
-    year: 2024,
-    description: "A gripping psychological thriller from the author of The Girl on the Train. Set on a remote Scottish island, the story follows a reclusive artist whose peaceful existence is shattered when a young woman's body washes ashore. As secrets unravel and the past collides with the present, Hawkins masterfully builds tension in this atmospheric tale of obsession, art, and murder.",
-    authorBio: "Paula Hawkins is a British author best known for her psychological thriller 'The Girl on the Train', which became a global phenomenon and was adapted into a major motion picture. Born in Zimbabwe and raised in London, Hawkins worked as a journalist before turning to fiction. Her novels are characterized by unreliable narrators, complex female characters, and dark psychological themes.",
-    reviews: [
-      { author: "Ольга Волкова", rating: 5, date: "22 марта 2026", title: "Захватывающий триллер", text: "Не могла оторваться! Hawkins создает невероятную атмосферу и держит в напряжении до последней страницы." },
-      { author: "Сергей Белов", rating: 4, date: "17 марта 2026", title: "Отличный психологический триллер", text: "Мрачная атмосфера шотландского острова идеально подходит для этой истории. Рекомендую!" }
-    ]
+    "id": 4,
+    "title": "The Blue Hour",
+    "author": "Paula Hawkins",
+    "price": 17.5,
+    "category": "fiction",
+    "genre": "thriller",
+    "rating": 4,
+    "image": "images/v93_74.png",
+    "inStock": true,
+    "isNew": false
   },
   {
-    id: 5,
-    title: "Homegoing",
-    author: "Yaa Gyasi",
-    price: 23.00,
-    category: "fiction",
-    rating: 5,
-    image: "images/v93_78.png",
-    inStock: true,
-    isNew: false,
-    isbn: "978-1-101-94713-3",
-    pages: 320,
-    publisher: "Knopf",
-    year: 2016,
-    description: "A sweeping multi-generational novel tracing two branches of a family through centuries. Beginning with two half-sisters in 18th century Ghana—one sold into slavery, one married to a British slaver—the novel follows their descendants through eight generations. Gyasi's debut is an epic exploration of the legacy of slavery, colonialism, and the African diaspora, told through intimate, interconnected stories.",
-    authorBio: "Yaa Gyasi was born in Ghana and raised in Huntsville, Alabama. She holds a BA in English from Stanford University and an MFA from the Iowa Writers' Workshop. 'Homegoing' was her debut novel, published when she was just 26 years old. The book won numerous awards and was selected for Oprah's Book Club. Gyasi's work explores themes of race, identity, and the lasting impact of historical trauma.",
-    reviews: [
-      { author: "Екатерина Новикова", rating: 5, date: "25 марта 2026", title: "Эпическая семейная сага", text: "Невероятно мощная книга о наследии рабства. Каждая глава - отдельная история, но все вместе создают потрясающую картину." },
-      { author: "Андрей Смирнов", rating: 5, date: "19 марта 2026", title: "Обязательно к прочтению", text: "Одна из лучших книг, которые я читал. Gyasi талантливо показывает, как история влияет на поколения." }
-    ]
+    "id": 5,
+    "title": "Homegoing",
+    "author": "Yaa Gyasi",
+    "price": 23,
+    "category": "fiction",
+    "genre": "historical",
+    "rating": 5,
+    "image": "images/v93_78.png",
+    "inStock": true,
+    "isNew": false
   },
   {
-    id: 6,
-    title: "Stay With Me",
-    author: "Ayọ̀bámi Adébáyọ̀",
-    price: 18.00,
-    category: "fiction",
-    rating: 4,
-    image: "images/v93_82.png",
-    inStock: true,
-    isNew: false,
-    isbn: "978-1-101-97127-5",
-    pages: 272,
-    publisher: "Knopf",
-    year: 2017,
-    description: "A powerful debut novel about a marriage tested by infertility in 1980s Nigeria. Yejide and Akin's love story is complicated when, after four years of marriage without children, Akin's family pressures him to take a second wife. Set against the backdrop of Nigeria's political turmoil, this intimate novel explores themes of love, betrayal, tradition, and the lengths people will go to for family.",
-    authorBio: "Ayọ̀bámi Adébáyọ̀ was born in Lagos, Nigeria. She has a BA in Literature in English from Obafemi Awolowo University and an MA in Creative Writing from the University of East Anglia. 'Stay With Me' was her debut novel and won the 9mobile Prize for Literature. Her work explores contemporary Nigerian life, gender roles, and the tension between tradition and modernity.",
-    reviews: [
-      { author: "Наталья Кузнецова", rating: 5, date: "14 марта 2026", title: "Трогательная история любви", text: "Очень честная книга о браке, традициях и желании иметь детей. Adébáyọ̀ пишет с большой эмпатией." },
-      { author: "Виктор Лебедев", rating: 4, date: "9 марта 2026", title: "Сильный дебют", text: "Интересный взгляд на нигерийскую культуру и семейные отношения. Рекомендую." }
-    ]
+    "id": 6,
+    "title": "Stay With Me",
+    "author": "Ayọ̀bámi Adébáyọ̀",
+    "price": 18,
+    "category": "fiction",
+    "genre": "literary-fiction",
+    "rating": 4,
+    "image": "images/v93_82.png",
+    "inStock": true,
+    "isNew": false
   },
   {
-    id: 7,
-    title: "White Teeth",
-    author: "Zadie Smith",
-    price: 15.00,
-    category: "fiction",
-    rating: 5,
-    image: "images/v93_86.png",
-    inStock: false,
-    isNew: false,
-    isbn: "978-0-375-70386-9",
-    pages: 448,
-    publisher: "Random House",
-    year: 2000,
-    description: "A brilliant debut novel about friendship, family, and the complexities of modern London. Following the lives of two families—the Joneses and the Iqbals—over several decades, Smith creates a vibrant portrait of multicultural Britain. With wit, humor, and insight, she explores themes of immigration, identity, religion, and the clash between tradition and modernity in contemporary London.",
-    authorBio: "Zadie Smith was born in London in 1975 to a Jamaican mother and English father. She studied English Literature at Cambridge University. 'White Teeth' was published when she was just 24 and became an instant bestseller. Smith has since written several acclaimed novels and essay collections. She is known for her sharp social commentary, diverse characters, and exploration of multicultural identity.",
-    reviews: [
-      { author: "Светлана Орлова", rating: 5, date: "28 марта 2026", title: "Шедевр современной литературы", text: "Невероятно смешная и умная книга о современном Лондоне. Smith создает живых, запоминающихся персонажей." },
-      { author: "Максим Федоров", rating: 5, date: "21 марта 2026", title: "Обязательно к прочтению", text: "Одна из лучших книг о мультикультурализме. Остроумная и глубокая одновременно." }
-    ]
+    "id": 7,
+    "title": "White Teeth",
+    "author": "Zadie Smith",
+    "price": 15,
+    "category": "fiction",
+    "genre": "literary-fiction",
+    "rating": 5,
+    "image": "images/v93_86.png",
+    "inStock": false,
+    "isNew": false
   },
   {
-    id: 8,
-    title: "Open Water",
-    author: "Caleb Azumah Nelson",
-    price: 17.50,
-    category: "fiction",
-    rating: 4,
-    image: "images/v93_90.png",
-    inStock: true,
-    isNew: false,
-    isbn: "978-0-8021-5794-9",
-    pages: 144,
-    publisher: "Grove Press",
-    year: 2021,
-    description: "A tender love story about two young Black artists navigating life in London. The narrator, a photographer, falls in love with a dancer, and together they explore art, identity, and what it means to be Black in contemporary Britain. Written in lyrical, poetic prose, this debut novel is an intimate meditation on love, masculinity, and the power of vulnerability.",
-    authorBio: "Caleb Azumah Nelson is a British-Ghanaian writer and photographer born and raised in South East London. He graduated from the University of Westminster with a degree in Politics and International Relations. 'Open Water' is his debut novel and won the Costa First Novel Award. His work explores themes of Black British identity, masculinity, and the intersection of art and life.",
-    reviews: [
-      { author: "Дарья Романова", rating: 5, date: "26 марта 2026", title: "Поэтичная история любви", text: "Невероятно красивая проза. Nelson пишет о любви с такой нежностью и честностью." },
-      { author: "Игорь Васильев", rating: 4, date: "20 марта 2026", title: "Сильный дебют", text: "Короткая, но очень мощная книга. Лиричная и трогательная." }
-    ]
+    "id": 8,
+    "title": "Open Water",
+    "author": "Caleb Azumah Nelson",
+    "price": 17.5,
+    "category": "fiction",
+    "genre": "literary-fiction",
+    "rating": 4,
+    "image": "images/v93_90.png",
+    "inStock": true,
+    "isNew": false
   },
   {
-    id: 9,
-    title: "Circe",
-    author: "Madeline Miller",
-    price: 23.50,
-    category: "fiction",
-    rating: 5,
-    image: "images/v93_94.png",
-    inStock: true,
-    isNew: false,
-    isbn: "978-0-316-55633-0",
-    pages: 400,
-    publisher: "Little, Brown",
-    year: 2018,
-    description: "A stunning reimagining of the life of Circe, the sorceress from Greek mythology. Banished to a deserted island for her powers of witchcraft, Circe hones her craft and encounters famous mythological figures including Odysseus, the Minotaur, and Medea. Miller transforms the story of a minor goddess into an epic tale of female empowerment, independence, and the search for belonging.",
-    authorBio: "Madeline Miller is an American novelist and classicist. She studied Classics at Brown University and earned her MA in the same subject from the University of Pennsylvania. Her debut novel 'The Song of Achilles' won the Orange Prize for Fiction. Miller is known for her lyrical prose and her ability to breathe new life into ancient myths, particularly by centering female perspectives.",
-    reviews: [
-      { author: "Юлия Соловьева", rating: 5, date: "30 марта 2026", title: "Великолепная переработка мифа", text: "Miller превращает Цирцею из злодейки в сложного, многогранного персонажа. Абсолютный шедевр!" },
-      { author: "Денис Козлов", rating: 5, date: "24 марта 2026", title: "Лучшая книга о греческой мифологии", text: "Невероятно красивая проза. Даже если вы не любите мифологию, эта книга вас захватит." }
-    ]
+    "id": 9,
+    "title": "Circe",
+    "author": "Madeline Miller",
+    "price": 23.5,
+    "category": "fiction",
+    "genre": "mythology",
+    "rating": 5,
+    "image": "images/v93_94.png",
+    "inStock": true,
+    "isNew": false
   },
   {
-    id: 10,
-    title: "There There",
-    author: "Tommy Orange",
-    price: 18.00,
-    category: "fiction",
-    rating: 4,
-    image: "images/v93_98.png",
-    inStock: true,
-    isNew: false,
-    isbn: "978-0-525-52096-5",
-    pages: 304,
-    publisher: "Knopf",
-    year: 2018,
-    description: "A powerful novel about urban Native American lives converging at a powwow. Twelve characters from Native communities across Oakland, California, travel to the Big Oakland Powwow, each carrying their own stories of struggle, survival, and identity. Orange weaves together their narratives in a devastating exploration of contemporary Native American life, historical trauma, and the search for connection.",
-    authorBio: "Tommy Orange is a Native American author, an enrolled member of the Cheyenne and Arapaho Tribes of Oklahoma. He was born and raised in Oakland, California. He holds an MFA from the Institute of American Indian Arts. 'There There' is his debut novel and was a finalist for the Pulitzer Prize. Orange's work focuses on urban Native American experiences, challenging stereotypes and bringing visibility to often-overlooked communities.",
-    reviews: [
-      { author: "Алина Петрова", rating: 5, date: "27 марта 2026", title: "Мощная и важная книга", text: "Orange рассказывает истории, которые редко слышны. Честная и пронзительная книга о современных коренных американцах." },
-      { author: "Роман Сидоров", rating: 4, date: "22 марта 2026", title: "Сильный дебют", text: "Множество персонажей и историй сплетаются в захватывающее повествование. Рекомендую!" }
-    ]
+    "id": 10,
+    "title": "There There",
+    "author": "Tommy Orange",
+    "price": 18,
+    "category": "fiction",
+    "genre": "literary-fiction",
+    "rating": 4,
+    "image": "images/v93_98.png",
+    "inStock": true,
+    "isNew": false
   },
   {
-    id: 11,
-    title: "American Dirt",
-    author: "Jeanine Cummins",
-    price: 15.00,
-    category: "fiction",
-    rating: 3,
-    image: "images/v93_102.png",
-    inStock: true,
-    isNew: false,
-    isbn: "978-1-250-20976-9",
-    pages: 400,
-    publisher: "Flatiron Books",
-    year: 2020,
-    description: "A gripping story of a mother and son fleeing cartel violence in Mexico. Lydia, a bookshop owner in Acapulco, and her eight-year-old son Luca must flee after a cartel massacre kills their family. Their harrowing journey north toward the US border is a tale of survival, resilience, and the desperate search for safety. A controversial but compelling look at the migrant experience.",
-    authorBio: "Jeanine Cummins is an American author of Irish and Puerto Rican heritage. She has written several novels and a memoir. 'American Dirt' became a bestseller but also sparked significant controversy regarding cultural representation and who has the right to tell certain stories. Despite the debate, the novel brought attention to the experiences of migrants fleeing violence.",
-    reviews: [
-      { author: "Марина Григорьева", rating: 4, date: "16 марта 2026", title: "Захватывающая, но спорная", text: "Очень напряженная история о миграции. Читается как триллер, хотя тема серьезная." },
-      { author: "Олег Захаров", rating: 3, date: "11 марта 2026", title: "Интересно, но не без проблем", text: "Хорошо написано, но понимаю критику относительно культурной репрезентации." }
-    ]
+    "id": 11,
+    "title": "American Dirt",
+    "author": "Jeanine Cummins",
+    "price": 15,
+    "category": "fiction",
+    "genre": "thriller",
+    "rating": 3,
+    "image": "images/v93_102.png",
+    "inStock": true,
+    "isNew": false
   },
   {
-    id: 12,
-    title: "Milk And Honey",
-    author: "Rupi Kaur",
-    price: 17.50,
-    category: "psychology",
-    rating: 5,
-    image: "images/v93_106.png",
-    inStock: true,
-    isNew: false,
-    isbn: "978-1-449-47425-6",
-    pages: 208,
-    publisher: "Andrews McMeel",
-    year: 2015,
-    description: "A collection of poetry and prose about survival, femininity, and love. Divided into four chapters—the hurting, the loving, the breaking, and the healing—Kaur explores themes of trauma, abuse, love, loss, and femininity. Her minimalist style and raw honesty have resonated with millions of readers worldwide, making this one of the most popular poetry collections of the modern era.",
-    authorBio: "Rupi Kaur is a Canadian poet, illustrator, and author of Punjabi descent. Born in India and raised in Canada, she began performing poetry at the age of 21. Her Instagram poetry went viral, leading to the publication of 'Milk and Honey'. Kaur's work is characterized by its accessibility, emotional directness, and focus on female empowerment and healing from trauma.",
-    reviews: [
-      { author: "Анастасия Белова", rating: 5, date: "29 марта 2026", title: "Исцеляющая поэзия", text: "Каждое стихотворение трогает до глубины души. Kaur пишет о боли и исцелении с невероятной честностью." },
-      { author: "Кирилл Морозов", rating: 5, date: "23 марта 2026", title: "Простая, но мощная", text: "Минималистичный стиль делает эти стихи еще более сильными. Рекомендую всем." }
-    ]
+    "id": 12,
+    "title": "Milk And Honey",
+    "author": "Rupi Kaur",
+    "price": 17.5,
+    "category": "psychology",
+    "genre": "poetry",
+    "rating": 5,
+    "image": "images/v93_106.png",
+    "inStock": true,
+    "isNew": false
   },
   {
-    id: 13,
-    title: "Atomic Habits",
-    author: "James Clear",
-    price: 28.00,
-    category: "business",
-    rating: 5,
-    image: "images/v93_110.png",
-    inStock: true,
-    isNew: true,
-    isbn: "978-0-7352-1129-2",
-    pages: 320,
-    publisher: "Avery",
-    year: 2018,
-    description: "A practical guide to building good habits and breaking bad ones. Clear presents a proven framework for improving every day through tiny changes. Drawing on neuroscience, psychology, and real-world examples, he explains how small habits compound into remarkable results. The book offers actionable strategies for habit formation, making it easier to stick to good habits and break bad ones.",
-    authorBio: "James Clear is an author, speaker, and entrepreneur focused on habits, decision-making, and continuous improvement. His work has appeared in the New York Times, Time, and Entrepreneur. 'Atomic Habits' has sold millions of copies worldwide and has been translated into over 50 languages. Clear's website receives millions of visitors each month, and his newsletter has hundreds of thousands of subscribers.",
-    reviews: [
-      { author: "Татьяна Волкова", rating: 5, date: "31 марта 2026", title: "Лучшая книга о привычках", text: "Практичная и понятная. Clear дает конкретные инструменты, которые реально работают. Изменила мою жизнь!" },
-      { author: "Артем Николаев", rating: 5, date: "25 марта 2026", title: "Must-read для всех", text: "Если вы хотите что-то изменить в своей жизни, начните с этой книги. Очень рекомендую!" }
-    ]
+    "id": 13,
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "price": 28,
+    "category": "business",
+    "genre": "self-help",
+    "rating": 5,
+    "image": "images/v93_110.png",
+    "inStock": true,
+    "isNew": true
   },
   {
-    id: 14,
-    title: "Sapiens",
-    author: "Yuval Noah Harari",
-    price: 32.00,
-    category: "nonfiction",
-    rating: 5,
-    image: "images/v93_114.png",
-    inStock: true,
-    isNew: false,
-    isbn: "978-0-062-31609-7",
-    pages: 464,
-    publisher: "Harper",
-    year: 2015,
-    description: "A brief history of humankind from the Stone Age to the modern age. Harari explores how Homo sapiens came to dominate the world, examining the Cognitive Revolution, the Agricultural Revolution, and the Scientific Revolution. He challenges our assumptions about progress, happiness, and what it means to be human, offering a sweeping narrative that connects biology, history, and philosophy.",
-    authorBio: "Yuval Noah Harari is an Israeli historian and professor at the Hebrew University of Jerusalem. He specializes in world history, medieval history, and military history. 'Sapiens' became an international bestseller and has been translated into over 60 languages. Harari has since written 'Homo Deus' and '21 Lessons for the 21st Century'. His work is known for its broad scope and provocative insights.",
-    reviews: [
-      { author: "Владимир Соколов", rating: 5, date: "28 марта 2026", title: "Переворачивает представление о мире", text: "Harari заставляет по-новому взглянуть на историю человечества. Увлекательно и познавательно!" },
-      { author: "Елена Павлова", rating: 5, date: "21 марта 2026", title: "Обязательно к прочтению", text: "Одна из самых важных книг нашего времени. Меняет взгляд на прошлое, настоящее и будущее." }
-    ]
+    "id": 14,
+    "title": "Sapiens",
+    "author": "Yuval Noah Harari",
+    "price": 32,
+    "category": "nonfiction",
+    "genre": "historical",
+    "rating": 5,
+    "image": "images/v93_114.png",
+    "inStock": true,
+    "isNew": false
   },
   {
-    id: 15,
-    title: "Thinking, Fast and Slow",
-    author: "Daniel Kahneman",
-    price: 29.00,
-    category: "psychology",
-    rating: 5,
-    image: "images/v93_118.png",
-    inStock: true,
-    isNew: false,
-    isbn: "978-0-374-53355-7",
-    pages: 512,
-    publisher: "Farrar, Straus and Giroux",
-    year: 2011,
-    description: "A groundbreaking exploration of the two systems that drive the way we think. Kahneman, a Nobel Prize winner, explains how our minds work through two systems: System 1 (fast, intuitive, emotional) and System 2 (slow, deliberate, logical). He reveals the biases and heuristics that influence our decisions, offering insights into how we can make better choices in business, life, and relationships.",
-    authorBio: "Daniel Kahneman is an Israeli-American psychologist and economist notable for his work on the psychology of judgment and decision-making. He was awarded the Nobel Memorial Prize in Economic Sciences in 2002. His research with Amos Tversky on cognitive biases has profoundly influenced economics, psychology, and behavioral science. 'Thinking, Fast and Slow' synthesizes decades of his groundbreaking research.",
-    reviews: [
-      { author: "Михаил Петров", rating: 5, date: "26 марта 2026", title: "Меняет понимание мышления", text: "Kahneman объясняет, почему мы принимаем иррациональные решения. Обязательна к прочтению для всех!" },
-      { author: "Ирина Федорова", rating: 5, date: "20 марта 2026", title: "Фундаментальная работа", text: "Сложная, но невероятно важная книга. Помогает понять себя и других людей." }
-    ]
+    "id": 15,
+    "title": "Thinking, Fast and Slow",
+    "author": "Daniel Kahneman",
+    "price": 29,
+    "category": "psychology",
+    "genre": "self-help",
+    "rating": 5,
+    "image": "images/v93_118.png",
+    "inStock": true,
+    "isNew": false
   },
   {
-    id: 16,
-    title: "The Lean Startup",
-    author: "Eric Ries",
-    price: 26.00,
-    category: "business",
-    rating: 4,
-    image: "images/v93_122.png",
-    inStock: true,
-    isNew: false,
-    isbn: "978-0-307-88789-4",
-    pages: 336,
-    publisher: "Crown Business",
-    year: 2011,
-    description: "How today's entrepreneurs use continuous innovation to create radically successful businesses. Ries introduces the Lean Startup methodology, which emphasizes rapid experimentation, validated learning, and iterative product releases. The book teaches entrepreneurs how to build sustainable businesses by testing hypotheses, measuring progress, and pivoting when necessary, minimizing waste and maximizing learning.",
-    authorBio: "Eric Ries is an entrepreneur and author who pioneered the Lean Startup movement. He served as a senior software engineer at There.com and co-founded IMVU, where he developed many of the Lean Startup principles. Ries has been a consultant to startups, venture capital firms, and large companies. His work has influenced how startups and established companies approach innovation and product development worldwide.",
-    reviews: [
-      { author: "Александр Ковалев", rating: 5, date: "24 марта 2026", title: "Библия для стартапов", text: "Ries создал методологию, которая изменила мир стартапов. Обязательна для всех предпринимателей!" },
-      { author: "Ольга Семенова", rating: 4, date: "18 марта 2026", title: "Практичная и полезная", text: "Много конкретных советов и примеров. Помогла мне запустить свой проект." }
-    ]
+    "id": 16,
+    "title": "The Lean Startup",
+    "author": "Eric Ries",
+    "price": 26,
+    "category": "business",
+    "genre": "self-help",
+    "rating": 4,
+    "image": "images/v93_122.png",
+    "inStock": true,
+    "isNew": false
+  },
+  {
+    "id": 17,
+    "title": "Дневники вампира. Пробуждение",
+    "author": "Лиза Джейн Смит",
+    "price": 18.5,
+    "category": "fiction",
+    "genre": "literary-fiction",
+    "rating": 5,
+    "image": "newbooks/Дневники вампира. Пробуждение/image.jpg",
+    "inStock": true,
+    "isNew": true,
+    "description": "Елена - \"золотая\" девочка, она привыкла, что мальчики стоят перед ней на коленях. Стефан - темноволосый красавец, он никогда не смотрит на солнце и прячет глаза за темными очками. Он - единственный, на кого чары Елены не действуют, хотя он и пытается защитить ее от мрачных тайн своего прошлого. Дамон - его сексуальный и жестокий брат, он всю жизнь посвятил мести Стефану, когда-то предавшему его. Сейчас ему нужна Елена и он пойдет на все, чтобы добиться ее тела. И заполучить ее душу. Дневники вампира: история прекрасной Елены, по воле рока ставшей причиной смертельной схватки братьев-вампиров.",
+    "authorBio": "Лиза Джейн Смит (Lisa Jane Smith, LJane Smith, L.J. Smith) — американский автор юношеской литературы, сочетающая в своих книгах такие жанры как фэнтези, научную фантастику, ужасы и элементы любовных романов.\n\nОна закончила Калифорнийский Университет в Санта-Барбаре с бакалаврской степенью в экспериментальной психологии, получила два преподавательских диплома в Университете Сан-Франциско — по начальному и специальному (коррекционному) образованию. Некоторое время работала по специальности, но потом полностью посвятила себя писательской карьере.\n\nИдея первой книги пришла к Лизе Джейн еще в старших классах школы, но дописала она ее только в год окончания университета. Это был роман The Night of the Solstice и через некоторое время, после внесения изменений и сокращения текста, книгу приобрело издательство Macmillan.\n\nПерсонажи книг Лизы Джейн Смит — сверхъестественные или человеческие, все как на подбор красивы и молоды. Чаще всего сюжет в ее книгах является вариацией на тему конфликта светлой и темной стороны, добра и зла, в центре которого находится персонаж перерождающийся за время этого конфликта и превращающийся в героя. Ее книги наивны и идеалистичны, но все-таки обладают определенным шармом.\n\nВ 2009 году, после 10-летнего творческого отпуска, писательница вернулась к аудитории с новым романом серии Дневники вампира (The Vampire Diaries) и анонсировала выход еще трех своих книг в ближайший год. Кроме того, в 2007—2008 годах были успешно переизданы ее старые работы.\n\nСейчас Лиза Джейн Смит живет на побережье в северной Калифорнии в хаотичном доме с множеством книг и кошкой, общается с читателями и вполне довольна собственной жизнью.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "5 звезд: Чтение книги началось с просмотра сериала \"Дневники вампира\", хотелось прочитать заранее чт..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-5-17-057476-6",
+    "format": "70x100/32",
+    "pages": 352,
+    "size": "120х165 мм",
+    "language": "Русский язык",
+    "year": 2009
+  },
+  {
+    "id": 18,
+    "title": "Божественная комедия",
+    "author": "Данте Алигьери",
+    "price": 35,
+    "category": "fiction",
+    "genre": "poetry",
+    "rating": 5,
+    "image": "newbooks/Божественная комедия/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "«Когда-то я в годину зрелых лет\n\nВ дремучий лес зашел и заблудился...»\n\nтак начинается «Божественная комедия», бессмертная поэтическая трилогия, в которой Данте дерзко переосмыслил средневековую традицию «хождений» по загробному миру и религиозных «видений», и создал поистине уникальное произведение, в котором мистика сочетается с философией, а притча — с весьма ядовитым политическим памфлетом.\n\nПрошли века. Политическая злободневность «Божественной комедии» давно пропала, но остались и бессмертная красота языка Данте, и мощь его литературного таланта, и сила философской мысли, предвосхитившей духовные и нравственные искания гуманистических гениев Возрождения.",
+    "authorBio": "Итальянский поэт, мыслитель, создатель итальянского литературного языка. Родился во Флоренции, был политиком, но проиграл в борьбе партий и был изгнан из родного города — остаток жизни провёл в скитаниях. Главный труд — «Божественная комедия» (1307–1321), поэма в трёх частях («Ад», «Чистилище», «Рай»), где поэт путешествует по загробному миру. В проводники ему даны Вергилий (символ разума) и Беатриче (символ любви и веры). Данте создал грандиозную картину мироздания, соединив античную мифологию, христианство и свою политическую боль. Его считают отцом итальянской литературы и одним из величайших поэтов мира.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "(5 звёзд) Тяжело читать из-за обилия имён и аллегорий, но оно того стоит. Ад у Данте — это самый стр..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-5-17-100180-3",
+    "format": "76x100/32",
+    "pages": 800,
+    "size": "179х114 мм",
+    "language": "Русский язык",
+    "year": 2022
+  },
+  {
+    "id": 19,
+    "title": "Сага о Форсайтах",
+    "author": "Джон Голсуорси",
+    "price": 42,
+    "category": "fiction",
+    "genre": "historical",
+    "rating": 5,
+    "image": "newbooks/Сага о Форсайтах/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "«За высокое искусство повествования, вершиной которого является „Сага о Форсайтах“», классик английской литературы Джон Голсуорси стал лауреатом Нобелевской премии (1932). Его популярнейший цикл романов, воссоздающий историю клана Форсайтов на фоне истории Англии, от викторианской эпохи до 1920-х гг., написан о семье и о жизни во всей ее полноте и сложности. За внешним успехом влиятельных чопорных Форсайтов, представителей верхушки английской буржуазии, сдержанно обсуждающих дивиденды и курсы акций, открывается безумие страсти, семейная вражда, безнадежная любовь и боль одиночества...",
+    "authorBio": "Английский писатель, лауреат Нобелевской премии по литературе (1932), классик критического реализма. Родился в зажиточной семье юриста, окончил Оксфорд, но адвокатом проработал недолго — понял, что его призвание литература.\n\nВсемирную славу ему принёс цикл «Сага о Форсайтах» (трилогия с двумя интерлюдиями), над которым он работал почти 20 лет. Голсуорси создал хронику трёх поколений вымышленной семьи — типичных британских собственников, для которых главные ценности это комфорт, деньги и «порядочность». Сам писатель признавался, что хотел показать «хищнический инстинкт» форсайтов, но неожиданно для себя полюбил некоторых героев, особенно Сомерса.\n\nПомимо «Саги», Голсуорси писал пьесы (самая известная — «Серебряная коробочка»), рассказы и эссе. Был убеждённым гуманистом, критиковал лицемерие викторианского общества и выступал за социальную справедливость. Его стиль — спокойный, ироничный и точный — до сих пор остаётся образцом английской прозы.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1) (3 звезды) Талантливо написано, но не моё. Слишком много быта, сплетен и интерьеров, а динамики м..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-5-389-11627-6",
+    "format": "76х100/32",
+    "pages": 1376,
+    "size": "217х145 мм",
+    "language": "Русский язык",
+    "year": 2021
+  },
+  {
+    "id": 20,
+    "title": "Спеши любить",
+    "author": "Николас Спаркс",
+    "price": 16,
+    "category": "fiction",
+    "genre": "literary-fiction",
+    "rating": 5,
+    "image": "newbooks/Спеши любить/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "Тихий городок Бофор. Каждый год Лэндон Картер приезжает сюда, чтобы вспомнить историю своей первой любви... Историю страсти и нежности, много лет назад связавшей его, парня из богатой семьи, и Джейми Салливан, скромную дочь местного пастора. История радости и грусти, счастья и боли. Историю чувства, которое человеку доводится испытать лишь раз в жизни запомнить навсегда...",
+    "authorBio": "Американский писатель, король мелодраматических бестселлеров. Родился в Небраске, окончил университет Нотр-Дам. Прежде чем стать писателем, пробовал себя в продажах лекарств и даже выиграл стипендию на обучение поэзии. Всемирная слава пришла с дебютным романом «Дневник памяти» (1996). Специализируется на историях о большой любви, которая побеждает болезнь, время и обстоятельства. «Спеши любить» (1999) — один из самых пронзительных его романов: о школьном хулигане Лэндонеи тихой дочери священника Джейми. Книги Спаркса многократно экранизированы, его имя стало синонимом сентиментальной прозы для миллионов читательниц по всему миру.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1) 5: Ревела три дня. Такая простая и такая сильная история о том, что любить нужно здесь и сейчас, ..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-5-17-100426-2",
+    "format": "76x100/32",
+    "pages": 224,
+    "size": "Язык",
+    "language": "Год издания"
+  },
+  {
+    "id": 21,
+    "title": "Земля",
+    "author": "Эмиль Золя",
+    "price": 28,
+    "category": "fiction",
+    "genre": "historical",
+    "rating": 4,
+    "image": "newbooks/Земля/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "Потрясающий исторический роман, который принес Перл Бак Пулитцеровскую премию за 1932 год и стал в США бестселлером номер один в 1931–1932 гг.\n\nПервая книга грандиозной семейной саги, за которую писательница была удостоена Нобелевской премии по литературе.\n\nКажется, этот роман, действие которого происходит в Китае начала прошлого века, не мог выйти из-под пера западного автора — настолько аутентично в нем поведана масштабная и глубоко психологичная история честного и работящего крестьянина Ван Луна, его нелегкого пути к богатству и преуспеванию и того, сколь дорого пришлось ему заплатить за этот успех. История его жены и его молодой наложницы, его детей, каждый из которых готов идти собственной дорогой. Но кто из них станет для отца гордостью, а кто разобьет ему сердце?..",
+    "authorBio": "Американская писательница, лауреат Нобелевской премии по литературе (1938). Родилась в семье миссионеров и выросла в Китае, где провела почти 40 лет. Именно Китай и его крестьяне стали главной темой её книг. Самый известный роман — «Земля» (1931) — история о бедном земледельце Ван Луне, который разбогател, но едва не потерял себя. Перл Бак показала Западу живого Китая, без экзотики и карикатур, за что получила Пулитцеровскую премию и Нобелевку. Её книги — о связи человека с землёй, жадности, семье и вечном круговороте жизни.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1) (5 звёзд) Никогда не думала, что буду так переживать за китайского крестьянина. Книга как удар по..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-5-17-137085-5",
+    "format": "76x100/32",
+    "pages": 384,
+    "size": "182х116 мм",
+    "language": "Русский язык",
+    "year": 2021
+  },
+  {
+    "id": 22,
+    "title": "Незнакомка из Уайлдфелл-Холла",
+    "author": "Энн Бронте",
+    "price": 22,
+    "category": "fiction",
+    "genre": "literary-fiction",
+    "rating": 4,
+    "image": "newbooks/Незнакомка из Уайлдфелл-Холла/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "Одно из лучших произведений «золотого века» английской литературы. Многократно экранизированный шедевр психологического реализма. Роман, который был впервые опубликован в 1848 году, — и произвел в Англии сенсацию, поскольку в нем, впервые в европейской литературе, со всей откровенностью и прямотой, задавался очень неудобный вопрос: должна ли женщина, ставшая женой домашнего тирана, покорно нести свой крест «ради сохранения семьи», во имя детей? А может, разорвать узы такого брака — не только ее право, но и долг именно как матери? Вопрос, который, увы, для многих женщин во всем мире сохраняет актуальность и сейчас.",
+    "authorBio": "Английская писательница, младшая из трёх знаменитых сестёр Бронте. Родилась в йоркширском священническом доме, где рано потеряла мать. Вместе с Шарлоттой и Эмили придумывала вымышленные миры, но при жизни считалась наименее известной из сестёр.\n\nЭнн работала гувернанткой — и этот горький опыт отразила в своём первом романе «Агнес Грей» (1847). Книга честно показала унизительное положение бедной девушки-воспитательницы в богатом доме. Второй и главный роман — «Незнакомка из Уайлдфелл-Холла» (1848) — оказался ещё смелее: история о женщине, которая уходит от мужа-тирана, чтобы жить самостоятельно и воспитывать сына вдали от его развратного влияния.\n\nВикторианское общество сочло книгу «грубой» и «неприличной». Энн умерла в 29 лет от туберкулёза, так и не увидев признания. Но позже критики поняли, что она была самой смелой из сестёр: её романы о женской независимости и праве на счастье без насилия опередили время на сто лет.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1) Алла 5: Энн Бронте — самая смелая из сестёр. Роман про женщину, которая сбежала от мужа-тирана, н..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-5-17-154368-6",
+    "format": "76x100/32",
+    "pages": 640,
+    "size": "182х116 мм",
+    "language": "Русский язык",
+    "year": 2023
+  },
+  {
+    "id": 23,
+    "title": "Убить пересмешника",
+    "author": "Харпер Ли",
+    "price": 24,
+    "category": "fiction",
+    "genre": "literary-fiction",
+    "rating": 5,
+    "image": "newbooks/Убить пересменщика/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "История маленького сонного городка на юге Америки, поведанная маленькой девочкой. История ее брата Джима, друга Дилла и ее отца – честного, принципиального адвоката Аттикуса Финча, одного из последних и лучших представителей старой \"южной аристократии\". История судебного процесса по делу чернокожего парня, обвиненного в насилии над белой девушкой. Но прежде всего – история переломной эпохи, когда ксенофобия, расизм, нетерпимость и ханжество, присущие американскому югу, постепенно уходят в прошлое. \"Ветер перемен\" только-только повеял над Америкой. Что он принесет?..",
+    "authorBio": "Долго откладывал эту книгу, думал — очередная школьная классика, которую навязывают. Зря. Начал читать и не мог оторваться. Глазами маленькой девочки показана такая взрослая и страшная несправедливость. Аттикус Финч — теперь один из моих любимых литературных героев. После книги долго сидел и переваривал. Обязательно дам почитать сыну-подростку. Советую всем, кто хочет понять, что такое совесть и честь.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1) Владимир 5: Долго откладывал эту книгу, думал — очередная школьная классика, которую навязывают. ..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-5-17-090411-2",
+    "format": "76x100/32",
+    "pages": 300,
+    "language": "Русский язык",
+    "year": 2018
+  },
+  {
+    "id": 24,
+    "title": "Таинственный сад",
+    "author": "Фрэнсис Бёрнетт",
+    "price": 19,
+    "category": "fiction",
+    "genre": "literary-fiction",
+    "rating": 5,
+    "image": "newbooks/Таинственный сад/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "Описание\n\nВ центре романа «Таинственный сад» — десятилетняя Мери Леннокс, вернувшаяся из Индии в Англию после смерти родителей. В поместье ее дяди Арчибальда Крэвена Мери вынуждена привыкать к совершенно другой жизни, непохожей на ту, что была у нее до сих пор. Однажды девочка узнает о загадочном заброшенном саде, в который запрещено входить, и решает разыскать его. Вместе с новыми друзьями Мери предстоит проникнуть в тайны этого удивительного места, преображающего души людей.",
+    "authorBio": "Англо-американская писательница, подарившая миру трёх знаменитых детей: лорда Фаунтлероя, Сара Кру и Мэри Леннокс. Родилась в Манчестере, после смерти отца семья обеднела. В 16 лет Фрэнсис начала писать, чтобы прокормить родных, а в 1865 году эмигрировала в США.\n\nУспех пришёл с романом «Маленький лорд Фаунтлерой» (1886) — трогательной историей о мальчике, который смягчил сердце старого графа. Затем вышли «Маленькая принцесса» (1905) и главный шедевр — «Таинственный сад» (1911). Последний при жизни писательницы не оценили, но позже он стал одной из самых любимых детских книг в мире.\n\nБернетт показала, что детская литература может говорить о сложных вещах: одиночестве, исцелении, силе природы и надежды. Её книги до сих пор переиздаются и экранизируются.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1) Дана (5): Мне очень сильно понравилась эта книга. В начале может быть и скучно но начиная с серед..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-5-17-164168-9",
+    "format": "76x100/32",
+    "pages": 320,
+    "size": "180 х 115 мм",
+    "language": "Русский язык",
+    "year": 2024
+  },
+  {
+    "id": 25,
+    "title": "Убийство на поле для гольфа",
+    "author": "Агата Кристи",
+    "price": 21,
+    "category": "fiction",
+    "genre": "thriller",
+    "rating": 4,
+    "image": "newbooks/Убийство на поле для гольфа/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "Эркюль Пуаро получает письмо от южноамериканского миллионера с просьбой о помощи. Но Пуаро и Гастингс не успевают спасти несчастного месье Рено — его труп находят на поле для гольфа. Пуаро вынужден погрузиться в запутанную цепь событий, происходивших задолго до расследования, чтобы выйти на убийцу миллионера.",
+    "authorBio": "Агата Мэри Кларисса Миллер, известная всему миру как «королева детектива», родилась в английском городе Торки. За свою жизнь она написала более 60 романов, 19 сборников рассказов и 16 пьес, став самым публикуемым автором после Шекспира и Библии.\n\nЛитературный успех пришел к ней не сразу. Первый роман «Загадочное происшествие в Стайлзе» (1920) познакомил читателей с бельгийским сыщиком Эркюлем Пуаро — человеком с «яйцевидной головой» и одержимостью порядком. Позже появилась и вторая легендарная героиня — мисс Джейн Марпл, пожилая любительница вязания и сплетен, которая раскрывает преступления, просто сравнивая их с жизнью своей деревни Сент-Мэри-Мид.\n\nСама Кристи была загадкой: скромная домохозяйка, которая работала аптечницей во время обеих мировых войн. Знания ядов, полученные там, сделали её романы уникально точными. В 1926 году писательница пережила громкое 11-дневное исчезновение, которое до сих пор обсуждают биографы.\n\nКниги Агаты Кристи переведены на 100 языков. Её пьеса «Мышеловка» держит рекорд сцены, идя в Лондоне с 1952 года. Она доказала, что детектив может быть интеллектуальной игрой, где главное — не кровь, а логика и человеческая психология.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1) Анастасия Бронза (5): Браво. Как всегда книги Агаты самые достойные в детективах, а Пуаро самый н..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "format": "170х120х20",
+    "pages": 288,
+    "size": "125 × 200 мм",
+    "language": "Русский язык",
+    "year": 2019
+  },
+  {
+    "id": 26,
+    "title": "Invincible Vol. 23: Full House",
+    "author": "Роберт Киркман",
+    "price": 28,
+    "category": "fiction",
+    "genre": "comics",
+    "rating": 5,
+    "image": "newbooks/Invincible Vol 23 Full House/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "Марк вернулся из прошлого… в совершенно другое будущее. Теперь ему предстоит собрать осколки своей жизни и попытаться восстановить её. Кори Уокер, соавтор комикса «Непобедимый», возвращается к работе над серией, чтобы подготовить почву для следующей главы в жизни Непобедимого! В сборник входят выпуски INVINCIBLE #127-132.",
+    "authorBio": "В первую очередь, Киркман — создатель комиксов, добившийся ошеломляющего успеха в адаптации своих комиксов в крупные франшизы во всех формах контента. В 2010 году его удостоенная премии Эйснера серия «Ходячие мертвецы» была адаптирована в телесериал канала AMC. Она стала мировым феноменом, получив самые высокие рейтинги среди всех драматических сериалов кабельного телевидения и занимая первое место в рейтинге среди желанной аудитории 18-49 лет. Также по мотивам серии были созданы блокбастерная игровая франшиза, налажен лицензионный бизнес и продолжается успешная издательская деятельность.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1) 5:Имба. Лучшее, что я читал за последние десять лет 2) 5: Возвращение к рисункам Кори Уокера в эт..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "B01M1KY3OH",
+    "format": "-",
+    "pages": 153,
+    "size": "-",
+    "language": "Русский язык",
+    "year": 2017
+  },
+  {
+    "id": 27,
+    "title": "Непобедимый. Том 1: Семейные дела",
+    "author": "Роберт Киркман",
+    "price": 25,
+    "category": "fiction",
+    "genre": "comics",
+    "rating": 5,
+    "image": "newbooks/Непобедимый Том 1 Семейные дела/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "Марк Грейсон — обычный подросток в типичной американской средней школе. После школы и по выходным у него есть убогая подработка. Ему нравятся девушки… но он их не совсем понимает. Он любит проводить время с друзьями и поздно ложится спать по субботам… по крайней мере, пока не начнутся хорошие мультфильмы. Единственное отличие Марка от всех остальных — его отец — самый могущественный супергерой на планете, и в последнее время он, кажется, наследует отцовские способности. Сначала это звучит неплохо, но как можно идти по стопам отца, зная, что никогда не сможешь соответствовать его уровню?",
+    "authorBio": "В первую очередь, Киркман — создатель комиксов, добившийся ошеломляющего успеха в адаптации своих комиксов в крупные франшизы во всех формах контента. В 2010 году его удостоенная премии Эйснера серия «Ходячие мертвецы» была адаптирована в телесериал канала AMC. Она стала мировым феноменом, получив самые высокие рейтинги среди всех драматических сериалов кабельного телевидения и занимая первое место в рейтинге среди желанной аудитории 18-49 лет. Также по мотивам серии были созданы блокбастерная игровая франшиза, налажен лицензионный бизнес и продолжается успешная издательская деятельность.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1) 5: Это довольно сильно отличается от сериала, но всё равно читается легко, и мне очень нравятся ф..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-1106900159",
+    "format": "-",
+    "pages": 24,
+    "size": "",
+    "language": "Русский язык",
+    "year": 2013
+  },
+  {
+    "id": 28,
+    "title": "Непобедимый. Том 12: Всё ещё стоим",
+    "author": "Роберт Киркман",
+    "price": 27,
+    "category": "fiction",
+    "genre": "comics",
+    "rating": 5,
+    "image": "newbooks/Непобедимый том 12 Всё ещё стоим/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "Ангстром Леви наконец-то атакует — и мир никогда не был в большей опасности! В этом захватывающем томе, получившем признание критиков, принимают участие все персонажи вселенной Image… и это только прелюдия к CONQUEST! В этом обязательном к прочтению томе этой невероятной серии Непобедимый сталкивается со своими самыми смертельными угрозами.",
+    "authorBio": "В первую очередь, Киркман — создатель комиксов, добившийся ошеломляющего успеха в адаптации своих комиксов в крупные франшизы во всех формах контента. В 2010 году его удостоенная премии Эйснера серия «Ходячие мертвецы» была адаптирована в телесериал канала AMC. Она стала мировым феноменом, получив самые высокие рейтинги среди всех драматических сериалов кабельного телевидения и занимая первое место в рейтинге среди желанной аудитории 18-49 лет. Также по мотивам серии были созданы блокбастерная игровая франшиза, налажен лицензионный бизнес и продолжается успешная издательская деятельность.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1. 5): «Invincible Volume 12: Still Standing» — мощное дополнение к серии, мастерски сочетающее захв..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "B006TR1SSG",
+    "format": "-",
+    "pages": 168,
+    "size": "-",
+    "language": "Русский язык",
+    "year": 2010
+  },
+  {
+    "id": 29,
+    "title": "Магическая битва. Том 28",
+    "author": "Гэгэ Акутами",
+    "price": 22,
+    "category": "fiction",
+    "genre": "comics",
+    "rating": 5,
+    "image": "newbooks/Магическая битва Том 28/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "В мире, где проклятые духи питаются ничего не подозревающими людьми, фрагменты легендарного и внушающего страх демона Рёмена Сукуны были утеряны и разбросаны повсюду. Если какой-либо демон съест части тела Сукуны, обретенная им сила может уничтожить мир, каким мы его знаем. К счастью, существует таинственная школа дзюдзюцу, созданная для защиты хрупкого существования живых от сверхъестественного!",
+    "authorBio": "-",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1) 5: Этот том просто невероятный! Сюжет становится всё более напряжённым, с потрясающими экшен-сцен..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-1974760220",
+    "format": "-",
+    "pages": 200,
+    "size": "-",
+    "language": "Русский язык",
+    "year": 2025
+  },
+  {
+    "id": 30,
+    "title": "Сумерки",
+    "author": "Стефани Майер",
+    "price": 19.5,
+    "category": "fiction",
+    "genre": "fantasy",
+    "rating": 5,
+    "image": "newbooks/Сумерки/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "Первая книга знаменитой вампирской саги, изданной миллионными тиражами и возглавившая списки бестселлеров десяти стран. Книга, которая привела в восхищение молодежь не только англоязычных стран, но и Франции и Испании, Скандинавии, Японии и Китая! Литературный дебют, который критики сравнивают с \"Интервью с вампиром\" Энн Райс и \"Теми, кто охотится ночью\" Барбары Хэмбли! Влюбиться в вампира… Это страшно? Это романтично… Это прекрасно и мучительно… Но это не может кончиться добром - особенно в вечном противостоянии вампирских кланов, где малейшее отличие от окружающих уже превращает вас во врага…",
+    "authorBio": "Стефани Майер — автор, изменившая мир подростковой литературы навсегда. Её имя прочно связано с вампирами, волками и любовью на грани смерти. Кто-то считает её книги наивными, кто-то — гениальными, но равнодушных точно нет. Благодаря Майер подростковое фэнтези обрело массовую популярность, а миллионы юных (и не только) читателей научились мечтать о бессмертной любви.\n\nСтефани Майер (в девичестве — Морган) родилась 24 декабря 1973 года в Хартфорде, штат Коннектикут, но выросла в Скоттсдейле, штат Аризона, в многодетной мормонской семье. С юности она была отличницей, тихой, замкнутой и погружённой в книги. Окончила Университет Бригама Янга, где изучала английскую филологию. После свадьбы с детской любовью, Кристианом Майером, она сосредоточилась на семье и воспитании детей — и долгое время даже не думала о писательстве.\n\nВсё изменилось летом 2003 года, когда ей приснился странный, яркий сон: девушка разговаривает с вампиром в солнечном поле. Этот образ не давал ей покоя, и, не имея никакого литературного опыта, Стефани начала писать. Через три месяца был готов черновик «Сумерек» — книги, которая вскоре взорвёт мир.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1)5: Очень круто! Начал читать после фильмов и это просто нечто. 2) 5: Обычно я не читаю книги с пом..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-5-17-061625-1",
+    "format": "70x90/16",
+    "pages": 352,
+    "size": "170х215 мм",
+    "language": "Русский язык",
+    "year": 2021
+  },
+  {
+    "id": 31,
+    "title": "Ведьмак. Крещение огнем",
+    "author": "Анджей Сапковский",
+    "price": 26,
+    "category": "fiction",
+    "genre": "fantasy",
+    "rating": 5,
+    "image": "newbooks/Ведьмак. Крещение огнем/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "Крик и стон, звон оружия и перевернутое небо, боль и бьющаяся в висках кровь. Тьма для павших, скорбь для выживших. Мир в огне, человек не только эльфу волк, но и человеку, брат на брата с ножом идет... А ведьмак Геральт идет по выжженной земле в Нильфгаард. Ведьмак, которому роком назначено лишь по миру болтаться да вредящих людям монстров кончать... Ради Цири, Дитя-Надежды, должен Геральт пройти страшное из страшного - крещение огнем... — Я иду к Цири. Я теряю время! Я ей нужен. В моем сне она плясала. Плясала в какой-то забитой дымом халупе. А над крышей этой чертовой халупы, в холодном ночном воздухе плясала смерть. - Геральт сложил пальцы знаком Аард и ударил в полыхающие ветки. - За мной! За мной! Сквозь огонь! \"Крещение огнем, — подумал ведьмак, словно сумасшедший рубя и парируя удары. - Я должен был пройти сквозь огонь ради Цири\".",
+    "authorBio": "Анджей Сапковский (польск. Andrzej Sapkowski, род. 21 июня 1948, Лодзь, Польша) — известный польский писатель, публицист. Родился в 1948 году в городе Лодзь. Окончил университет г. Лодзь, факультет внешней торговли. С 1972 по 1994 год работал в торговле.\n\nВ 1986 году Анджей Сапковский написал свою первую фэнтезийную новеллу «Wiedzmin» («Ведьмак»), в которой создал своего главного героя — Ведьмака (Геральт из Ривии), мастера меча и волшебства, который за деньги убивает монстров и разнообразных мифических созданий в своем фентезийном мире. Первые несколько рассказов о Ведьмаке были изданы в книге «Wiedzmin» («Ведьмак»). Сапковский — автор сюжета книги-игры «Око Иррдеса» (польск. Oko Yrrhedesa, ISBN 83-86572-16-7), очень популярной в Польше. За исключением первого сборника рассказов о Ведьмаке, Сапковский постоянно сотрудничает с издательством «superNOWA». В 1998 году писатель был удостоен премии «Passport», присуждаемой еженедельником «Polityka» за заслуги перед польской культурой.\n\nСреди заслуг автора также масса критических статей про фэнтези и для тех, кто ею увлекается, таких как «Пособие для начинающих писателей фэнтези», «Пируг, или Нет золота в Серых Горах» (статья о современных проблемах фэнтези, как литературы), «Меч, магия, экран» (про экранизации) и многих других.\n\nПроизведения Сапковского изданы на чешском, русском и немецком языках. По заявлениям издателей, Сапковский входит в пятерку самых издаваемых авторов Польши. Сам же писатель, как правило, не распространяется о тиражах своих книг…",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "5: «Крещение огнём» Анджея Сапковского — пятая по счёту книга в цикле о Ведьмаке. Это не просто очер..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "5-15-000402-2",
+    "format": "84x108/32",
+    "pages": 480,
+    "size": "130х205 мм",
+    "language": "Русский язык"
+  },
+  {
+    "id": 32,
+    "title": "Бегущий в лабиринте",
+    "author": "Джеймс Дашнер",
+    "price": 21,
+    "category": "fiction",
+    "genre": "dystopian",
+    "rating": 5,
+    "image": "newbooks/Бегущий в лабиринте/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "БЕСТСЕЛЛЕР №1 ПО ВЕРСИИ NEW YORK TIMES «БЕГУЩИЙ В ЛАБИРИНТЕ» • В первой книге этого постапокалиптического феномена подросток без памяти должен пройти через смертельно опасный лабиринт, чтобы выжить. «Загадочная сага о выживании, которую преданные поклонники описывают как сплав «Повелителя мух » и « Голодных игр »» ( Entertainment Weekly ). Когда Томас просыпается в лифте, единственное, что он помнит, — это свое имя. Его окружают незнакомцы — мальчики, которые тоже потеряли память. За высокими каменными стенами, окружающими их, находится безграничный, постоянно меняющийся лабиринт. Это единственный выход — и никто еще не смог пройти его живым. Затем появляется девушка. Первая девушка в истории. И послание, которое она передает, ужасает: Помни. Выживи. Беги.",
+    "authorBio": "Джеймс Дашнер — автор более десятка книг, ставших бестселлерами №1 по версии New York Times, включая серию «Бегущий в лабиринте» (фильмы производства 20th Century Fox, ныне принадлежащей Disney). Он вырос в Джорджии, но сейчас живет в Скалистых горах со своей женой и четырьмя детьми. Более подробную информацию о нем, его книгах, мероприятиях и т.д. можно найти на сайте jamesdashner.com.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "5: Книга захватывает с самого начала благодаря интересным персонажам и сценам. Автор погружает вас в..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-0385737951",
+    "format": "76х100/33",
+    "pages": 375,
+    "size": "205 × 135 мм",
+    "language": "Год издания"
+  },
+  {
+    "id": 33,
+    "title": "Hunter X Hunter, Vol. 9",
+    "author": "Ёсихиро Тогаси",
+    "price": 18,
+    "category": "fiction",
+    "genre": "manga",
+    "rating": 5,
+    "image": "newbooks/Hunter X Hunter, Vol. 9/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "Поиски отца приводят отважного Гона в мир безумных приключений.\n\nОхотники — особая порода людей, посвятивших себя поиску сокровищ, магических существ и даже других людей. Но для таких занятий требуется лицензия, и менее одного из ста тысяч может сдать изнурительный квалификационный экзамен. Те, кто его сдаёт, получают доступ к закрытым зонам, удивительным хранилищам информации и право называть себя Охотниками.\n\nНаступает день великого аукциона, но все товары пропали! Оказывается, мафия узнала о планах Пауков и послала своих десять лучших бойцов, чтобы разобраться с этим. Эти «Теневые звери» увезли аукционные лоты в безопасное место, и ужасные Пауки охотятся за ними. Отвлекаясь на все это и получая сомнительную помощь от Хисоки, Курапика приближается к мести Паукам. Но когда дело доходит до смертельной схватки с одним из сильнейших членов труппы, хватит ли скрытых сил Курапики, чтобы обеспечить победу?",
+    "authorBio": "-",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1) 5: Как всегда великолепно! Одна из лучших манга-арок всех времен. 2) 5: Девятый том «Hunter x Hun..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-1421506449",
+    "format": "-",
+    "pages": 200,
+    "size": "-",
+    "language": "Русский язык",
+    "year": 2006
+  },
+  {
+    "id": 34,
+    "title": "Атака на Титанов, том 1",
+    "author": "Хадзиме Исаяма",
+    "price": 24,
+    "category": "fiction",
+    "genre": "manga",
+    "rating": 5,
+    "image": "newbooks/Атака на Титанов/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "Теперь атаковать «Атаку на Титанов» стало проще, чем когда-либо, благодаря этим новым, гигантским изданиям-омнибусам «3 в 1»! Если вы ждали финального сезона аниме, чтобы погрузиться в захватывающее сёнэн-приключение, определившее целое десятилетие, то теперь у вас есть такая возможность. Эти новые книги содержат почти 600 страниц манги в специально оформленной обложке с тиснением, и все это в большем размере, чем обычная версия.\n\nВключает тома 1-3 « Атаки на Титанов» .\n\nНа протяжении тысячелетий люди правили миром природы. Но столетие назад все изменилось, когда появились Титаны. Гигантские, гротескные пародии на человеческую форму, эти бесполые монстры поглотили всех, кроме нескольких тысяч людей, которые укрылись за гигантскими стенами. Сегодня угроза Титанов — далекое воспоминание, и мальчик по имени Эрен жаждет исследовать мир за стеной. Но то, что начиналось как детская мечта, превратится в слишком реальный кошмар, когда Титан наконец пробьет дыру в стене, и человечество снова окажется на грани вымирания…",
+    "authorBio": "Благодаря своему дебютному сериалу « Атака на Титанов» Хадзиме Исаяма совершил стремительный взлет, превратившись из никому неизвестного художника в одного из лучших художников комиксов Японии.",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "1) 5: Доставка была отличной и в оговоренные сроки. Сборник отличается превосходным качеством печати..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "Формат",
+    "pages": 592,
+    "size": "Язык",
+    "language": "Год издания"
+  },
+  {
+    "id": 35,
+    "title": "Человек-бензопила том 4",
+    "author": "Тацуки Фудзимото",
+    "price": 20,
+    "category": "fiction",
+    "genre": "manga",
+    "rating": 5,
+    "image": "newbooks/Человек-бензопила том 4 Оружие могущественнее/image.png",
+    "inStock": true,
+    "isNew": true,
+    "description": "Денджи был мелким охотником на демонов, пытавшимся выжить в суровом мире. После того, как его убили во время выполнения задания, его оживил его питомец-демон Почита, и он стал чем-то новым и опасным — Человеком-бензопилой!\n\n4-й специальный отдел по истреблению демонов в серьёзной опасности, так как демон послал целую команду убийц, чтобы завладеть сердцем Денджи. Чтобы выжить в этой атаке, Денджи, Пауэр и Аки должны стать сильнее. Но достаточно ли умен Денджи, чтобы научиться контролировать свои демонические силы? Можно ли научить старого демона-бензопилу новым трюкам?",
+    "authorBio": "-",
+    "reviews": [
+      {
+        "author": "Читатель",
+        "rating": 5,
+        "date": "10 апреля 2026",
+        "title": "Отличная книга",
+        "text": "5: «Человек-бензопила», том 4, — захватывающее продолжение этой мрачной и остросюжетной манги. С пер..."
+      },
+      {
+        "author": "Книголюб",
+        "rating": 4,
+        "date": "5 апреля 2026",
+        "title": "Рекомендую",
+        "text": "Очень понравилось, отличная история."
+      }
+    ],
+    "isbn": "978-1974717279",
+    "format": "-",
+    "pages": 192,
+    "size": "12.7 × 1.52 × 19.05 см",
+    "language": "Русский язык",
+    "year": 2021
   }
 ];
 
+// Determine if we are running in a nested directory
+const isNestedPath = window.location.pathname.includes('/products/') || window.location.pathname.includes('\\products\\');
+const imagePrefix = isNestedPath ? '../' : '';
+
 // Get product ID from URL
 const urlParams = new URLSearchParams(window.location.search);
-const productId = parseInt(urlParams.get('id')) || 1;
+const urlId = urlParams.get('id');
+const dataId = document.querySelector('main.product-page')?.dataset.productId;
+const productId = parseInt(urlId) || parseInt(dataId) || 1;
 
 // Find the product
 const currentProduct = products.find(p => p.id === productId) || products[0];
@@ -351,41 +890,41 @@ const currentProduct = products.find(p => p.id === productId) || products[0];
 function loadProductData() {
   // Update title
   document.title = `${currentProduct.title} - Smart Bookshelf`;
-  
+
   // Update breadcrumb
   const breadcrumbTitle = document.querySelector('.breadcrumbs__item:last-child span');
   if (breadcrumbTitle) {
     breadcrumbTitle.textContent = currentProduct.title;
   }
-  
+
   // Update main image
   const mainImage = document.getElementById('mainImage');
   if (mainImage) {
-    mainImage.src = currentProduct.image;
+    mainImage.src = imagePrefix + currentProduct.image;
     mainImage.alt = currentProduct.title;
   }
-  
+
   // Update thumbnails
   const thumbs = document.querySelectorAll('.product-gallery__thumb img');
   thumbs.forEach(thumb => {
-    thumb.src = currentProduct.image;
+    thumb.src = imagePrefix + currentProduct.image;
     thumb.alt = currentProduct.title;
   });
-  
+
   // Update product info
   const titleElement = document.querySelector('.product-info__title');
   if (titleElement) titleElement.textContent = currentProduct.title;
-  
+
   const authorElement = document.querySelector('.product-info__author');
   if (authorElement) authorElement.textContent = currentProduct.author;
-  
+
   const priceElement = document.querySelector('.product-info__price');
   if (priceElement) priceElement.textContent = `$${currentProduct.price.toFixed(2)}`;
-  
+
   // Update rating
   const ratingValue = document.querySelector('.product-info__rating-value');
   if (ratingValue) ratingValue.textContent = currentProduct.rating.toFixed(1);
-  
+
   // Update stock status
   const stockElement = document.querySelector('.product-info__stock');
   if (stockElement) {
@@ -397,20 +936,20 @@ function loadProductData() {
       stockElement.style.color = '#ef4444';
     }
   }
-  
+
   // Update details
   const isbnElement = document.querySelector('.product-details__item:nth-child(1) .product-details__value');
   if (isbnElement) isbnElement.textContent = currentProduct.isbn || 'N/A';
-  
+
   const pagesElement = document.querySelector('.product-details__item:nth-child(2) .product-details__value');
   if (pagesElement) pagesElement.textContent = currentProduct.pages || 'N/A';
-  
+
   const publisherElement = document.querySelector('.product-details__item:nth-child(3) .product-details__value');
   if (publisherElement) publisherElement.textContent = currentProduct.publisher || 'N/A';
-  
+
   const yearElement = document.querySelector('.product-details__item:nth-child(4) .product-details__value');
   if (yearElement) yearElement.textContent = currentProduct.year || 'N/A';
-  
+
   // Update description tab
   const descriptionPanel = document.querySelector('.tabs__panel#description');
   if (descriptionPanel && currentProduct.description) {
@@ -419,7 +958,7 @@ function loadProductData() {
       <p>${currentProduct.description}</p>
     `;
   }
-  
+
   // Update author tab
   const authorPanel = document.querySelector('.tabs__panel#author');
   if (authorPanel && currentProduct.authorBio) {
@@ -428,7 +967,7 @@ function loadProductData() {
       <p>${currentProduct.authorBio}</p>
     `;
   }
-  
+
   // Update reviews tab
   const reviewsPanel = document.querySelector('.tabs__panel#reviews');
   if (reviewsPanel && currentProduct.reviews) {
@@ -438,7 +977,7 @@ function loadProductData() {
           <div class="review__avatar">${review.author.split(' ').map(n => n[0]).join('')}</div>
           <div class="review__info">
             <div class="review__author">${review.author}</div>
-            <div class="review__rating">${'⭐'.repeat(review.rating)}</div>
+            <div class="review__rating">${'⭐️'.repeat(review.rating)}</div>
             <div class="review__date">${review.date}</div>
           </div>
         </div>
@@ -451,16 +990,16 @@ function loadProductData() {
         </div>
       </article>
     `).join('');
-    
+
     const avgRating = currentProduct.rating.toFixed(1);
     const reviewCount = currentProduct.reviews.length;
-    
+
     reviewsPanel.innerHTML = `
       <div class="reviews">
         <div class="reviews__summary">
           <div class="reviews__rating">
             <div class="reviews__rating-number">${avgRating}</div>
-            <div class="reviews__rating-stars">${'⭐'.repeat(Math.round(currentProduct.rating))}</div>
+            <div class="reviews__rating-stars">${'⭐️'.repeat(Math.round(currentProduct.rating))}</div>
             <div class="reviews__rating-count">На основе ${reviewCount} отзывов</div>
           </div>
           <button class="btn btn--primary" id="writeReviewBtn">Написать отзыв</button>
@@ -485,14 +1024,14 @@ thumbs.forEach((thumb, index) => {
   thumb.addEventListener('click', () => {
     // Remove active class from all thumbs
     thumbs.forEach(t => t.classList.remove('active'));
-    
+
     // Add active class to clicked thumb
     thumb.classList.add('active');
-    
+
     // Update main image
     const img = thumb.querySelector('img');
     mainImage.src = img.src;
-    
+
     // Add animation
     mainImage.style.opacity = '0';
     setTimeout(() => {
@@ -526,7 +1065,7 @@ if (decreaseBtn && increaseBtn && quantityInput) {
     let value = parseInt(quantityInput.value);
     const min = parseInt(quantityInput.min);
     const max = parseInt(quantityInput.max);
-    
+
     if (isNaN(value) || value < min) {
       quantityInput.value = min;
     } else if (value > max) {
@@ -548,18 +1087,18 @@ if (addToCartBtn) {
       image: currentProduct.image,
       quantity: quantity
     };
-    
+
     // Add to cart (using cart from main.js)
     if (typeof cart !== 'undefined') {
       for (let i = 0; i < quantity; i++) {
         cart.addItem({ ...product, quantity: 1 });
       }
     }
-    
+
     // Visual feedback
     addToCartBtn.textContent = 'Добавлено!';
     addToCartBtn.style.background = '#10b981';
-    
+
     setTimeout(() => {
       addToCartBtn.innerHTML = `
         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -579,11 +1118,11 @@ const tabPanels = document.querySelectorAll('.tabs__panel');
 tabButtons.forEach(button => {
   button.addEventListener('click', () => {
     const targetTab = button.dataset.tab;
-    
+
     // Remove active class from all buttons and panels
     tabButtons.forEach(btn => btn.classList.remove('active'));
     tabPanels.forEach(panel => panel.classList.remove('active'));
-    
+
     // Add active class to clicked button and corresponding panel
     button.classList.add('active');
     document.getElementById(targetTab).classList.add('active');
@@ -597,26 +1136,26 @@ const zipCodeInput = document.getElementById('zipCode');
 if (calculateShippingBtn && zipCodeInput) {
   calculateShippingBtn.addEventListener('click', () => {
     const zipCode = zipCodeInput.value.trim();
-    
+
     if (!zipCode) {
       alert('Пожалуйста, введите почтовый индекс');
       return;
     }
-    
+
     // Simulate shipping calculation
     calculateShippingBtn.textContent = 'Расчет...';
     calculateShippingBtn.disabled = true;
-    
+
     setTimeout(() => {
       const shippingCost = Math.random() > 0.5 ? 'Бесплатно' : '$5.00';
       const deliveryDays = Math.floor(Math.random() * 3) + 2;
-      
+
       if (typeof cart !== 'undefined') {
         cart.showNotification(`Доставка: ${shippingCost}, ${deliveryDays}-${deliveryDays + 2} дня`);
       } else {
         alert(`Доставка: ${shippingCost}\nСрок доставки: ${deliveryDays}-${deliveryDays + 2} дня`);
       }
-      
+
       calculateShippingBtn.textContent = 'Рассчитать';
       calculateShippingBtn.disabled = false;
     }, 1000);
@@ -632,7 +1171,7 @@ if (writeReviewBtn) {
     if (reviewsTab) {
       reviewsTab.click();
     }
-    
+
     // Show notification (in real app, would open a modal)
     if (typeof cart !== 'undefined') {
       cart.showNotification('Функция написания отзывов будет доступна в следующей версии');
@@ -658,7 +1197,7 @@ if (relatedProductsGrid) {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
             </svg>
           </button>
-          <img src="${product.image}" alt="${product.title}" class="product-card__image">
+          <img src="${imagePrefix}${product.image}" alt="${product.title}" class="product-card__image">
         </div>
       </div>
       <div class="product-card__content">
@@ -681,7 +1220,7 @@ if (relatedProductsGrid) {
     card.addEventListener('click', (e) => {
       if (!e.target.closest('.product-card__wishlist') && !e.target.closest('.product-card__add-btn')) {
         const productId = card.dataset.productId;
-        window.location.href = `product.html?id=${productId}`;
+        window.location.href = `${imagePrefix}product.html?id=${productId}`;
       }
     });
   });
@@ -689,7 +1228,7 @@ if (relatedProductsGrid) {
 
 // Review helpful buttons
 document.querySelectorAll('.review__helpful').forEach(btn => {
-  btn.addEventListener('click', function() {
+  btn.addEventListener('click', function () {
     const currentText = this.textContent;
     const match = currentText.match(/\d+/);
     if (match) {

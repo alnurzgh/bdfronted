@@ -3,6 +3,16 @@
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', function() {
 
+// Check for URL parameters to open specific tab
+const urlParams = new URLSearchParams(window.location.search);
+const tabParam = urlParams.get('tab');
+if (tabParam) {
+  const tabButton = document.querySelector(`[data-tab="${tabParam}"]`);
+  if (tabButton) {
+    tabButton.click();
+  }
+}
+
 // ============================================
 // TAB SWITCHING
 // ============================================

@@ -1,22 +1,351 @@
-/* Login Page with Book Animation */
+/* ============================================
+   VIDEO LOGIN PAGE
+   ============================================ */
 
 /* ============================================
    BASE STYLES
    ============================================ */
 
-.login-page {
-  min-height: 100vh;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #000;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* ============================================
+   VIDEO BACKGROUND
+   ============================================ */
+
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: #000;
+}
+
+.video-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  pointer-events: none;
+}
+
+.video-background.active {
+  opacity: 1;
+}
+
+/* ============================================
+   CLICK OVERLAY (Initial State)
+   ============================================ */
+
+.click-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-  position: relative;
-  overflow: hidden;
-  transition: background 1s ease;
+  background: rgba(0, 0, 0, 0.3);
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-.login-page.book-opened {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+.click-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.click-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.click-hint svg {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 2px 10px rgba(255, 255, 255, 0.3));
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* ============================================
+   LOGIN FORM CONTAINER
+   ============================================ */
+
+.login-form-container {
+  position: fixed;
+  top: 50%;
+  right: 80px;
+  transform: translate(120%, -50%);
+  z-index: 50;
+  opacity: 0;
+  transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  width: 420px;
+}
+
+.login-form-container.visible {
+  transform: translate(0, -50%);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ============================================
+   LOGIN CARD - WARM GRADIENT DESIGN
+   ============================================ */
+
+.login-card {
+  width: 100%;
+  background: linear-gradient(135deg, #ff9a56 0%, #d4880a 50%, #8b5a00 100%);
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 
+    0 20px 60px rgba(212, 136, 10, 0.4),
+    0 0 0 1px rgba(255, 179, 71, 0.2);
+  position: relative;
+  overflow: hidden;
+  display: none;
+}
+
+.login-card.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Subtle shine effect */
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.login-card:hover::before {
+  left: 100%;
+}
+
+/* ============================================
+   CARD HEADER
+   ============================================ */
+
+.login-card__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.login-card__title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.5px;
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.3px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 15px;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-input:focus {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-input:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   SIGN IN BUTTON
+   ============================================ */
+
+.btn-signin {
+  width: 100%;
+  padding: 16px;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  color: #8b5a00;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 15px rgba(255, 215, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-signin::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.btn-signin:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 20px rgba(255, 215, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.btn-signin:hover::before {
+  left: 100%;
+}
+
+.btn-signin:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 10px rgba(255, 215, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-signin:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================
+   CARD FOOTER - SIGNUP LINK
+   ============================================ */
+
+.login-card__footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.login-card__footer p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.signup-link {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 5px rgba(255, 215, 0, 0.5);
+}
+
+.signup-link:hover {
+  color: #ffd700;
+  text-shadow: 0 2px 8px rgba(255, 215, 0, 0.8);
 }
 
 /* ============================================
@@ -25,18 +354,19 @@
 
 .login-logo {
   position: fixed;
-  top: var(--spacing-6);
-  left: var(--spacing-6);
+  top: 32px;
+  left: 32px;
   display: flex;
   align-items: center;
-  gap: var(--spacing-3);
-  color: var(--color-white);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-lg);
+  gap: 12px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
   text-decoration: none;
-  z-index: 100;
-  transition: all var(--transition-base);
-  opacity: 0.9;
+  z-index: 200;
+  transition: all 0.3s ease;
+  opacity: 0.95;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .login-logo:hover {
@@ -49,364 +379,69 @@
 }
 
 /* ============================================
-   BOOK CONTAINER
-   ============================================ */
-
-.book-container {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 10;
-}
-
-.book-container:hover {
-  transform: scale(1.05);
-}
-
-.book-container.animating {
-  cursor: default;
-}
-
-.book-container.background {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.5) translateY(-30%);
-  opacity: 0.15;
-  filter: blur(4px);
-  pointer-events: none;
-  z-index: 1;
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* ============================================
-   BOOK IMAGES
-   ============================================ */
-
-.book-image {
-  max-width: 500px;
-  max-height: 60vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-.book-image.closed {
-  opacity: 1;
-  transition: opacity 0.6s ease-out;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
-}
-
-.book-image.open {
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  filter: drop-shadow(0 20px 60px rgba(255, 215, 0, 0.3));
-}
-
-/* ============================================
-   CLICK HINT
-   ============================================ */
-
-.click-hint {
-  position: absolute;
-  bottom: -80px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-2);
-  color: var(--color-white);
-  font-size: var(--font-size-sm);
-  opacity: 0.7;
-  animation: floatHint 2s ease-in-out infinite;
-  transition: opacity 0.3s ease;
-}
-
-.click-hint svg {
-  width: 24px;
-  height: 24px;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.click-hint.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* ============================================
-   AUTH FORM WRAPPER
-   ============================================ */
-
-.auth-form-wrapper {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 20;
-  width: 100%;
-  max-width: 480px;
-  padding: 0 var(--spacing-4);
-  transition: opacity 0.3s ease;
-}
-
-.auth-form-wrapper.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* ============================================
-   AUTH CARD
-   ============================================ */
-
-.auth-card {
-  background: var(--color-white);
-  border-radius: var(--radius-2xl);
-  padding: var(--spacing-10);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  position: relative;
-}
-
-.auth-card__header {
-  text-align: center;
-  margin-bottom: var(--spacing-8);
-}
-
-.auth-card__title {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-2);
-  color: var(--color-black);
-}
-
-.auth-card__subtitle {
-  font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
-}
-
-/* ============================================
-   BACK TO BOOK BUTTON
-   ============================================ */
-
-.back-to-book {
-  position: absolute;
-  top: var(--spacing-6);
-  left: var(--spacing-6);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-gray-100);
-  border-radius: var(--radius-full);
-  color: var(--color-text-primary);
-  transition: all var(--transition-fast);
-  cursor: pointer;
-}
-
-.back-to-book:hover {
-  background: var(--color-gray-200);
-  transform: translateX(-4px);
-}
-
-/* ============================================
-   FORM STYLES
-   ============================================ */
-
-.auth-form__options {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--spacing-6);
-  flex-wrap: wrap;
-  gap: var(--spacing-2);
-}
-
-.password-input {
-  position: relative;
-}
-
-.password-input .input {
-  padding-right: var(--spacing-12);
-}
-
-.password-toggle {
-  position: absolute;
-  right: var(--spacing-4);
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-secondary);
-  transition: color var(--transition-fast);
-  border-radius: var(--radius-md);
-}
-
-.password-toggle:hover {
-  color: var(--color-text-primary);
-  background: var(--color-gray-100);
-}
-
-.auth-divider {
-  position: relative;
-  text-align: center;
-  margin: var(--spacing-6) 0;
-}
-
-.auth-divider::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--color-border);
-}
-
-.auth-divider span {
-  position: relative;
-  display: inline-block;
-  padding: 0 var(--spacing-4);
-  background: var(--color-white);
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
-}
-
-.auth-social {
-  margin-bottom: var(--spacing-6);
-}
-
-.auth-card__footer {
-  text-align: center;
-  padding-top: var(--spacing-6);
-  border-top: 1px solid var(--color-border);
-  color: var(--color-text-secondary);
-}
-
-.auth-link {
-  color: var(--color-black);
-  text-decoration: none;
-  font-weight: var(--font-weight-medium);
-  transition: opacity var(--transition-fast);
-}
-
-.auth-link:hover {
-  opacity: 0.7;
-}
-
-/* ============================================
-   ANIMATIONS
-   ============================================ */
-
-/* Book Opening Animation */
-@keyframes openBook {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-/* Glow Pulse Animation */
-@keyframes glowPulse {
-  0%, 100% {
-    filter: drop-shadow(0 20px 60px rgba(255, 215, 0, 0.4)) brightness(1);
-  }
-  50% {
-    filter: drop-shadow(0 20px 80px rgba(255, 215, 0, 0.8)) brightness(1.15);
-  }
-}
-
-/* Form Fade In Up */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -45%) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-/* Float Hint Animation */
-@keyframes floatHint {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-}
-
-/* Pulse Animation */
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.7;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-}
-
-/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 
 /* Tablet */
 @media (max-width: 1024px) {
-  .book-image {
-    max-width: 400px;
-    max-height: 55vh;
+  .login-form-container {
+    right: 40px;
   }
   
-  .auth-card {
-    padding: var(--spacing-8);
+  .login-card {
+    width: 380px;
+    padding: 40px 32px;
   }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .book-image {
-    max-width: 320px;
-    max-height: 50vh;
+  /* Hide video on mobile */
+  .video-container {
+    display: none;
   }
   
-  .book-container.background {
-    transform: translate(-50%, -50%) scale(0.4) translateY(-40%);
+  /* Hide click overlay on mobile */
+  .click-overlay {
+    display: none;
   }
   
-  .auth-card {
-    padding: var(--spacing-6);
+  /* Add background image for mobile */
+  body {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('../../newbooks/Invincible Vol 23 Full House/image.png') center/cover no-repeat fixed;
   }
   
-  .auth-card__title {
-    font-size: var(--font-size-2xl);
+  /* Center form on mobile */
+  .login-form-container {
+    top: 50%;
+    bottom: auto;
+    right: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    pointer-events: auto;
+    width: calc(100vw - 40px);
+    max-width: 400px;
+  }
+  
+  .login-form-container.visible {
+    transform: translate(-50%, -50%);
+  }
+  
+  .login-card {
+    width: 100%;
+    padding: 36px 28px;
+  }
+  
+  .login-card__title {
+    font-size: 32px;
   }
   
   .login-logo {
-    font-size: var(--font-size-base);
-    top: var(--spacing-4);
-    left: var(--spacing-4);
+    top: 20px;
+    left: 20px;
+    font-size: 16px;
   }
   
   .login-logo svg {
@@ -415,31 +450,37 @@
   }
   
   .click-hint {
-    bottom: -60px;
-    font-size: var(--font-size-xs);
+    font-size: 16px;
   }
   
-  .back-to-book {
-    width: 36px;
-    height: 36px;
-    top: var(--spacing-4);
-    left: var(--spacing-4);
+  .click-hint svg {
+    width: 40px;
+    height: 40px;
   }
 }
 
 /* Small Mobile */
 @media (max-width: 480px) {
-  .book-image {
-    max-width: 280px;
-    max-height: 45vh;
+  .login-form-container {
+    width: calc(100vw - 32px);
   }
   
-  .auth-form-wrapper {
-    max-width: 100%;
+  .login-card {
+    padding: 32px 24px;
   }
   
-  .auth-card {
-    padding: var(--spacing-5);
+  .login-card__title {
+    font-size: 28px;
+  }
+  
+  .form-input {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  
+  .btn-signin {
+    padding: 14px;
+    font-size: 15px;
   }
 }
 
@@ -449,26 +490,36 @@
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-  .book-container,
-  .book-image,
-  .auth-form-wrapper,
-  .click-hint {
+  .video-background,
+  .login-form-container,
+  .click-overlay,
+  .click-hint,
+  .form-input,
+  .btn-signin {
     animation: none !important;
-    transition: none !important;
-  }
-  
-  .book-container:hover {
-    transform: none;
+    transition: opacity 0.3s ease, transform 0.3s ease !important;
   }
 }
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .login-page {
-    background: #000000;
+  .login-card {
+    border: 2px solid #fff;
   }
   
-  .auth-card {
-    border: 2px solid var(--color-black);
+  .form-input {
+    border: 2px solid rgba(255, 255, 255, 0.5);
   }
+  
+  .btn-signin {
+    border: 2px solid #8b5a00;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+.form-input:focus-visible,
+.btn-signin:focus-visible,
+.login-logo:focus-visible {
+  outline: 3px solid rgba(255, 215, 0, 0.8);
+  outline-offset: 2px;
 }

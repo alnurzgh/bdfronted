@@ -118,8 +118,23 @@ const filterButtons = document.querySelectorAll('.blog-filter');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
+  // Load user posts from localStorage
+  const savedPosts = localStorage.getItem('userBlogPosts');
+  if (savedPosts) {
+    const userPosts = JSON.parse(savedPosts);
+    // Merge with default posts, keeping user posts at the beginning
+    blogPosts.length = 0;
+    blogPosts.push(...userPosts);
+  }
+  
   renderBlogPosts();
   setupEventListeners();
+  
+  // Add create post button handler
+  const createPostBtn = document.getElementById('createPostBtn');
+  if (createPostBtn) {
+    createPostBtn.addEventListener('click', showCreatePostModal);
+  }
 });
 
 // Render blog posts
@@ -203,9 +218,8 @@ function renderBlogPosts() {
   document.querySelectorAll('.blog-card').forEach(card => {
     card.addEventListener('click', () => {
       const postId = card.dataset.postId;
-      // In a real app, navigate to blog post detail page
-      console.log('Opening blog post:', postId);
-      alert('Страница поста будет доступна в следующей версии');
+      // Redirect to blog post page
+      window.location.href = `blog-post.html?id=${postId}`;
     });
   });
 }
@@ -223,6 +237,130 @@ function setupEventListeners() {
       // Re-render posts
       renderBlogPosts();
     });
+  });
+}
+
+// Handle video post clicks
+function handleVideoClick(postId) {
+  const post = blogPosts.find(p => p.id === parseInt(postId));
+  if (post && post.videoUrl) {
+    window.open(post.videoUrl, '_blank');
+  }
+}
+
+// Create new post functionality
+function showCreatePostModal() {
+  const modal = document.createElement('div');
+  modal.className = 'blog-modal';
+  modal.innerHTML = `
+    <div class="blog-modal__backdrop"></div>
+    <div class="blog-modal__content">
+      <div class="blog-modal__header">
+        <h2>Создать новый пост</h2>
+        <button class="blog-modal__close" aria-label="Закрыть">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <form class="blog-modal__form" id="createPostForm">
+        <div class="form-group">
+          <label for="postTitle">Заголовок</label>
+          <input type="text" id="postTitle" name="title" required placeholder="Введите заголовок поста">
+        </div>
+        <div class="form-group">
+          <label for="postType">Тип поста</label>
+          <select id="postType" name="type" required>
+            <option value="news">Новости</option>
+            <option value="customer">История клиента</option>
+            <option value="video">Видео</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="postExcerpt">Краткое описание</label>
+          <textarea id="postExcerpt" name="excerpt" required placeholder="Краткое описание поста" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="postAuthor">Автор</label>
+          <input type="text" id="postAuthor" name="author" required placeholder="Ваше имя">
+        </div>
+        <div class="form-group" id="videoUrlGroup" style="display: none;">
+          <label for="postVideoUrl">URL видео (YouTube)</label>
+          <input type="url" id="postVideoUrl" name="videoUrl" placeholder="https://youtu.be/...">
+        </div>
+        <div class="form-group">
+          <label for="postImage">URL изображения</label>
+          <input type="url" id="postImage" name="image" required placeholder="https://example.com/image.jpg">
+        </div>
+        <div class="blog-modal__actions">
+          <button type="button" class="btn btn--outline" id="cancelPost">Отмена</button>
+          <button type="submit" class="btn btn--primary">Опубликовать</button>
+        </div>
+      </form>
+    </div>
+  `;
+  
+  document.body.appendChild(modal);
+  document.body.style.overflow = 'hidden';
+  
+  // Show/hide video URL field based on post type
+  const postTypeSelect = modal.querySelector('#postType');
+  const videoUrlGroup = modal.querySelector('#videoUrlGroup');
+  const videoUrlInput = modal.querySelector('#postVideoUrl');
+  
+  postTypeSelect.addEventListener('change', (e) => {
+    if (e.target.value === 'video') {
+      videoUrlGroup.style.display = 'block';
+      videoUrlInput.required = true;
+    } else {
+      videoUrlGroup.style.display = 'none';
+      videoUrlInput.required = false;
+    }
+  });
+  
+  // Close modal handlers
+  const closeModal = () => {
+    modal.remove();
+    document.body.style.overflow = '';
+  };
+  
+  modal.querySelector('.blog-modal__close').addEventListener('click', closeModal);
+  modal.querySelector('.blog-modal__backdrop').addEventListener('click', closeModal);
+  modal.querySelector('#cancelPost').addEventListener('click', closeModal);
+  
+  // Form submit handler
+  modal.querySelector('#createPostForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const newPost = {
+      id: Date.now(),
+      type: formData.get('type'),
+      title: formData.get('title'),
+      excerpt: formData.get('excerpt'),
+      image: formData.get('image'),
+      author: formData.get('author'),
+      date: new Date().toISOString().split('T')[0],
+      readTime: '3 мин',
+      videoUrl: formData.get('videoUrl') || null,
+      featured: false
+    };
+    
+    // Add to beginning of posts array
+    blogPosts.unshift(newPost);
+    
+    // Save to localStorage
+    localStorage.setItem('userBlogPosts', JSON.stringify(blogPosts));
+    
+    // Re-render
+    renderBlogPosts();
+    
+    // Show notification
+    if (window.cart) {
+      cart.showNotification('Пост успешно опубликован!');
+    }
+    
+    closeModal();
   });
 }
 

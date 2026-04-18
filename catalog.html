@@ -24,10 +24,7 @@
         <div class="header__progress" id="scrollProgress"></div>
         <div class="container header__container">
             <a href="index.html" class="header__logo">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <rect width="32" height="32" rx="8" fill="black"/>
-                    <path d="M8 12h16M8 16h16M8 20h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                </svg>
+                <img src="logo/image.png" alt="Smart Bookshelf Logo" class="header__logo-img">
                 <span>Smart Bookshelf</span>
             </a>
 
@@ -46,11 +43,11 @@
                     <input type="text" class="header__search-input" placeholder="Поиск книг...">
                 </div>
 
-                <button class="header__icon-btn" aria-label="Избранное">
+                <a href="wishlist.html" class="header__icon-btn" aria-label="Избранное">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                     </svg>
-                </button>
+                </a>
 
                 <a href="cart.html" class="header__icon-btn" aria-label="Корзина">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -155,6 +152,48 @@
                     </div>
 
                     <div class="filter-section">
+                        <h3 class="filter-section__title">Жанры</h3>
+                        <div class="filter-section__content">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox__input" name="genre" value="literary-fiction">
+                                <span class="checkbox__label">Литературная проза</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox__input" name="genre" value="thriller">
+                                <span class="checkbox__label">Триллер</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox__input" name="genre" value="historical">
+                                <span class="checkbox__label">Историческая проза</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox__input" name="genre" value="poetry">
+                                <span class="checkbox__label">Поэзия</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox__input" name="genre" value="mythology">
+                                <span class="checkbox__label">Мифология</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox__input" name="genre" value="comics">
+                                <span class="checkbox__label">Комиксы</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox__input" name="genre" value="manga">
+                                <span class="checkbox__label">Манга</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox__input" name="genre" value="fantasy">
+                                <span class="checkbox__label">Фэнтези</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox__input" name="genre" value="dystopian">
+                                <span class="checkbox__label">Антиутопия</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
                         <h3 class="filter-section__title">Цена</h3>
                         <div class="filter-section__content">
                             <div class="price-range">
@@ -170,15 +209,15 @@
                         <div class="filter-section__content">
                             <label class="checkbox">
                                 <input type="checkbox" class="checkbox__input" name="rating" value="5">
-                                <span class="checkbox__label">⭐⭐⭐⭐⭐</span>
+                                <span class="checkbox__label">⭐️⭐️⭐️⭐️⭐️</span>
                             </label>
                             <label class="checkbox">
                                 <input type="checkbox" class="checkbox__input" name="rating" value="4">
-                                <span class="checkbox__label">⭐⭐⭐⭐ и выше</span>
+                                <span class="checkbox__label">⭐️⭐️⭐️⭐️ и выше</span>
                             </label>
                             <label class="checkbox">
                                 <input type="checkbox" class="checkbox__input" name="rating" value="3">
-                                <span class="checkbox__label">⭐⭐⭐ и выше</span>
+                                <span class="checkbox__label">⭐️⭐️⭐️ и выше</span>
                             </label>
                         </div>
                     </div>

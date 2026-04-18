@@ -24,10 +24,7 @@
         <div class="header__progress" id="scrollProgress"></div>
         <div class="container header__container">
             <a href="index.html" class="header__logo">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <rect width="32" height="32" rx="8" fill="black"/>
-                    <path d="M8 12h16M8 16h16M8 20h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                </svg>
+                <img src="logo/image.png" alt="Smart Bookshelf Logo" class="header__logo-img">
                 <span>Smart Bookshelf</span>
             </a>
 
@@ -46,11 +43,11 @@
                     <input type="text" class="header__search-input" placeholder="Поиск книг...">
                 </div>
 
-                <button class="header__icon-btn" aria-label="Избранное">
+                <a href="wishlist.html" class="header__icon-btn" aria-label="Избранное">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                     </svg>
-                </button>
+                </a>
 
                 <a href="cart.html" class="header__icon-btn" aria-label="Корзина">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,12 +112,6 @@
                     </svg>
                     <span>Мои заказы</span>
                 </button>
-                <button class="profile-tab" data-tab="wishlist">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                    </svg>
-                    <span>Избранное</span>
-                </button>
                 <button class="profile-tab" data-tab="settings">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
@@ -176,37 +167,6 @@
                         <h2>История заказов</h2>
                         <div class="orders-list">
                             <!-- Orders will be dynamically rendered here by profile.js -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Wishlist Tab -->
-                <div class="profile-tab-content" id="wishlist">
-                    <div class="profile-card">
-                        <h2>Избранные книги</h2>
-                        <div class="grid grid--4">
-                            <article class="product-card">
-                                <div class="product-card__image-wrapper">
-                                    <button class="product-card__wishlist" aria-label="Удалить из избранного">
-                                        <svg width="20" height="20" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                                        </svg>
-                                    </button>
-                                    <img src="images/book-barren-lives.png" alt="Barren Lives" class="product-card__image">
-                                </div>
-                                <div class="product-card__content">
-                                    <h3 class="product-card__title">Barren Lives</h3>
-                                    <p class="product-card__author">Graciliano Ramos</p>
-                                    <div class="product-card__footer">
-                                        <span class="product-card__price">$32.00</span>
-                                        <button class="product-card__add-btn" aria-label="Добавить в корзину">
-                                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </article>
                         </div>
                     </div>
                 </div>

@@ -218,16 +218,18 @@
   position: absolute;
   top: var(--spacing-3);
   left: var(--spacing-3);
-  background: var(--color-black);
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
   color: var(--color-white);
-  padding: var(--spacing-1) var(--spacing-3);
+  padding: var(--spacing-2) var(--spacing-4);
   border-radius: var(--radius-full);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   z-index: 10;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
   pointer-events: none;
+  letter-spacing: 0.5px;
+  transform: translateZ(30px);
 }
 
 .product-card__wishlist {

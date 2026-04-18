@@ -8,6 +8,7 @@ const products = [
     author: "Gabriel García Márquez",
     price: 23.00,
     category: "fiction",
+    genre: "literary-fiction",
     rating: 5,
     image: "images/v93_62.png",
     inStock: true,
@@ -19,6 +20,7 @@ const products = [
     author: "Graciliano Ramos",
     price: 32.00,
     category: "fiction",
+    genre: "literary-fiction",
     rating: 4,
     image: "images/v93_66.png",
     inStock: true,
@@ -30,6 +32,7 @@ const products = [
     author: "Chimamanda Ngozi Adichie",
     price: 35.50,
     category: "fiction",
+    genre: "literary-fiction",
     rating: 5,
     image: "images/v93_70.png",
     inStock: true,
@@ -41,6 +44,7 @@ const products = [
     author: "Paula Hawkins",
     price: 17.50,
     category: "fiction",
+    genre: "thriller",
     rating: 4,
     image: "images/v93_74.png",
     inStock: true,
@@ -52,6 +56,7 @@ const products = [
     author: "Yaa Gyasi",
     price: 23.00,
     category: "fiction",
+    genre: "historical",
     rating: 5,
     image: "images/v93_78.png",
     inStock: true,
@@ -63,6 +68,7 @@ const products = [
     author: "Ayọ̀bámi Adébáyọ̀",
     price: 18.00,
     category: "fiction",
+    genre: "literary-fiction",
     rating: 4,
     image: "images/v93_82.png",
     inStock: true,
@@ -74,6 +80,7 @@ const products = [
     author: "Zadie Smith",
     price: 15.00,
     category: "fiction",
+    genre: "literary-fiction",
     rating: 5,
     image: "images/v93_86.png",
     inStock: false,
@@ -85,6 +92,7 @@ const products = [
     author: "Caleb Azumah Nelson",
     price: 17.50,
     category: "fiction",
+    genre: "literary-fiction",
     rating: 4,
     image: "images/v93_90.png",
     inStock: true,
@@ -96,6 +104,7 @@ const products = [
     author: "Madeline Miller",
     price: 23.50,
     category: "fiction",
+    genre: "mythology",
     rating: 5,
     image: "images/v93_94.png",
     inStock: true,
@@ -107,6 +116,7 @@ const products = [
     author: "Tommy Orange",
     price: 18.00,
     category: "fiction",
+    genre: "literary-fiction",
     rating: 4,
     image: "images/v93_98.png",
     inStock: true,
@@ -118,6 +128,7 @@ const products = [
     author: "Jeanine Cummins",
     price: 15.00,
     category: "fiction",
+    genre: "thriller",
     rating: 3,
     image: "images/v93_102.png",
     inStock: true,
@@ -129,6 +140,7 @@ const products = [
     author: "Rupi Kaur",
     price: 17.50,
     category: "psychology",
+    genre: "poetry",
     rating: 5,
     image: "images/v93_106.png",
     inStock: true,
@@ -140,6 +152,7 @@ const products = [
     author: "James Clear",
     price: 28.00,
     category: "business",
+    genre: "self-help",
     rating: 5,
     image: "images/v93_110.png",
     inStock: true,
@@ -151,6 +164,7 @@ const products = [
     author: "Yuval Noah Harari",
     price: 32.00,
     category: "nonfiction",
+    genre: "historical",
     rating: 5,
     image: "images/v93_114.png",
     inStock: true,
@@ -162,6 +176,7 @@ const products = [
     author: "Daniel Kahneman",
     price: 29.00,
     category: "psychology",
+    genre: "self-help",
     rating: 5,
     image: "images/v93_118.png",
     inStock: true,
@@ -173,18 +188,253 @@ const products = [
     author: "Eric Ries",
     price: 26.00,
     category: "business",
+    genre: "self-help",
     rating: 4,
     image: "images/v93_122.png",
     inStock: true,
     isNew: false
+  },
+  {
+    id: 17,
+    title: "Дневники вампира. Пробуждение",
+    author: "Лиза Джейн Смит",
+    price: 18.50,
+    category: "fiction",
+    genre: "literary-fiction",
+    rating: 5,
+    image: "newbooks/Дневники вампира. Пробуждение/image.jpg",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 18,
+    title: "Божественная комедия",
+    author: "Данте Алигьери",
+    price: 35.00,
+    category: "fiction",
+    genre: "poetry",
+    rating: 5,
+    image: "newbooks/Божественная комедия/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 19,
+    title: "Сага о Форсайтах",
+    author: "Джон Голсуорси",
+    price: 42.00,
+    category: "fiction",
+    genre: "historical",
+    rating: 5,
+    image: "newbooks/Сага о Форсайтах/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 20,
+    title: "Спеши любить",
+    author: "Николас Спаркс",
+    price: 16.00,
+    category: "fiction",
+    genre: "literary-fiction",
+    rating: 5,
+    image: "newbooks/Спеши любить/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 21,
+    title: "Земля",
+    author: "Эмиль Золя",
+    price: 28.00,
+    category: "fiction",
+    genre: "historical",
+    rating: 4,
+    image: "newbooks/Земля/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 22,
+    title: "Незнакомка из Уайлдфелл-Холла",
+    author: "Энн Бронте",
+    price: 22.00,
+    category: "fiction",
+    genre: "literary-fiction",
+    rating: 4,
+    image: "newbooks/Незнакомка из Уайлдфелл-Холла/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 23,
+    title: "Убить пересмешника",
+    author: "Харпер Ли",
+    price: 24.00,
+    category: "fiction",
+    genre: "literary-fiction",
+    rating: 5,
+    image: "newbooks/Убить пересменщика/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 24,
+    title: "Таинственный сад",
+    author: "Фрэнсис Бёрнетт",
+    price: 19.00,
+    category: "fiction",
+    genre: "literary-fiction",
+    rating: 5,
+    image: "newbooks/Таинственный сад/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 25,
+    title: "Убийство на поле для гольфа",
+    author: "Агата Кристи",
+    price: 21.00,
+    category: "fiction",
+    genre: "thriller",
+    rating: 4,
+    image: "newbooks/Убийство на поле для гольфа/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 26,
+    title: "Invincible Vol. 23: Full House",
+    author: "Роберт Киркман",
+    price: 28.00,
+    category: "fiction",
+    genre: "comics",
+    rating: 5,
+    image: "newbooks/Invincible Vol 23 Full House/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 27,
+    title: "Непобедимый. Том 1: Семейные дела",
+    author: "Роберт Киркман",
+    price: 25.00,
+    category: "fiction",
+    genre: "comics",
+    rating: 5,
+    image: "newbooks/Непобедимый Том 1 Семейные дела/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 28,
+    title: "Непобедимый. Том 12: Всё ещё стоим",
+    author: "Роберт Киркман",
+    price: 27.00,
+    category: "fiction",
+    genre: "comics",
+    rating: 5,
+    image: "newbooks/Непобедимый том 12 Всё ещё стоим/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 29,
+    title: "Магическая битва. Том 28",
+    author: "Гэгэ Акутами",
+    price: 22.00,
+    category: "fiction",
+    genre: "comics",
+    rating: 5,
+    image: "newbooks/Магическая битва Том 28/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 30,
+    title: "Сумерки",
+    author: "Стефани Майер",
+    price: 19.50,
+    category: "fiction",
+    genre: "fantasy",
+    rating: 5,
+    image: "newbooks/Сумерки/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 31,
+    title: "Ведьмак. Крещение огнем",
+    author: "Анджей Сапковский",
+    price: 26.00,
+    category: "fiction",
+    genre: "fantasy",
+    rating: 5,
+    image: "newbooks/Ведьмак. Крещение огнем/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 32,
+    title: "Бегущий в лабиринте",
+    author: "Джеймс Дашнер",
+    price: 21.00,
+    category: "fiction",
+    genre: "dystopian",
+    rating: 5,
+    image: "newbooks/Бегущий в лабиринте/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 33,
+    title: "Hunter X Hunter, Vol. 9",
+    author: "Ёсихиро Тогаси",
+    price: 18.00,
+    category: "fiction",
+    genre: "manga",
+    rating: 5,
+    image: "newbooks/Hunter X Hunter, Vol. 9/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 34,
+    title: "Атака на Титанов, том 1",
+    author: "Хадзиме Исаяма",
+    price: 24.00,
+    category: "fiction",
+    genre: "manga",
+    rating: 5,
+    image: "newbooks/Атака на Титанов/image.png",
+    inStock: true,
+    isNew: true
+  },
+  {
+    id: 35,
+    title: "Человек-бензопила том 4",
+    author: "Тацуки Фудзимото",
+    price: 20.00,
+    category: "fiction",
+    genre: "manga",
+    rating: 5,
+    image: "newbooks/Человек-бензопила том 4 Оружие могущественнее/image.png",
+    inStock: true,
+    isNew: true
   }
 ];
+
+// Export products globally for wishlist page
+window.catalogProducts = products;
 
 // State
 let filteredProducts = [...products];
 let currentSort = 'popular';
+let currentPage = 1;
+const itemsPerPage = 16;
 let filters = {
   categories: [],
+  genres: [],
   priceMin: null,
   priceMax: null,
   ratings: [],
@@ -220,10 +470,16 @@ function renderProducts() {
       </div>
     `;
     productCount.textContent = '0';
+    renderPagination();
     return;
   }
 
-  productsGrid.innerHTML = filteredProducts.map(product => `
+  // Calculate pagination
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+
+  productsGrid.innerHTML = paginatedProducts.map(product => `
     <article class="product-card" data-product-id="${product.id}">
       <div class="product-card__image-wrapper">
         <div class="book-3d">
@@ -254,13 +510,92 @@ function renderProducts() {
 
   productCount.textContent = filteredProducts.length;
 
+  // Product URL mapping
+  const productUrls = {
+    17: 'products/дневники-вампира-пробуждение.html',
+    18: 'products/божественная-комедия.html',
+    19: 'products/сага-о-форсайтах.html',
+    20: 'products/спеши-любить.html',
+    21: 'products/земля.html',
+    22: 'products/незнакомка-из-уайлдфелл-холла.html',
+    23: 'products/убить-пересменщика.html',
+    24: 'products/таинственный-сад.html',
+    25: 'products/убийство-на-поле-для-гольфа.html',
+    26: 'products/invincible-vol-23.html',
+    27: 'products/непобедимый-том-1.html',
+    28: 'products/непобедимый-том-12.html',
+    29: 'products/магическая-битва-том-28.html',
+    30: 'products/сумерки.html',
+    31: 'products/ведьмак-крещение-огнем.html',
+    32: 'products/бегущий-в-лабиринте.html',
+    33: 'products/hunter-x-hunter-vol-9.html',
+    34: 'products/атака-на-титанов.html',
+    35: 'products/человек-бензопила-том-4.html'
+  };
+
   // Add click handlers to product cards
   document.querySelectorAll('.product-card').forEach(card => {
     card.addEventListener('click', (e) => {
       if (!e.target.closest('.product-card__wishlist') && !e.target.closest('.product-card__add-btn')) {
-        const productId = card.dataset.productId;
-        window.location.href = `product.html?id=${productId}`;
+        const productId = parseInt(card.dataset.productId);
+        const productUrl = productUrls[productId] || `product.html?id=${productId}`;
+        window.location.href = productUrl;
       }
+    });
+  });
+
+  renderPagination();
+}
+
+// Render pagination
+function renderPagination() {
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const paginationContainer = document.querySelector('.pagination');
+  
+  if (!paginationContainer || totalPages <= 1) {
+    if (paginationContainer) paginationContainer.style.display = 'none';
+    return;
+  }
+
+  paginationContainer.style.display = 'flex';
+
+  let paginationHTML = `
+    <button class="pagination__btn" data-page="prev" ${currentPage === 1 ? 'disabled' : ''} aria-label="Предыдущая страница">
+      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+  `;
+
+  for (let i = 1; i <= totalPages; i++) {
+    paginationHTML += `
+      <button class="pagination__btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>
+    `;
+  }
+
+  paginationHTML += `
+    <button class="pagination__btn" data-page="next" ${currentPage === totalPages ? 'disabled' : ''} aria-label="Следующая страница">
+      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+  `;
+
+  paginationContainer.innerHTML = paginationHTML;
+
+  // Add pagination click handlers
+  paginationContainer.querySelectorAll('.pagination__btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const page = btn.dataset.page;
+      if (page === 'prev' && currentPage > 1) {
+        currentPage--;
+      } else if (page === 'next' && currentPage < totalPages) {
+        currentPage++;
+      } else if (page !== 'prev' && page !== 'next') {
+        currentPage = parseInt(page);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      renderProducts();
     });
   });
 }
@@ -270,6 +605,11 @@ function applyFilters() {
   filteredProducts = products.filter(product => {
     // Category filter
     if (filters.categories.length > 0 && !filters.categories.includes(product.category)) {
+      return false;
+    }
+
+    // Genre filter
+    if (filters.genres.length > 0 && !filters.genres.includes(product.genre)) {
       return false;
     }
 
@@ -305,6 +645,7 @@ function applyFilters() {
     return true;
   });
 
+  currentPage = 1; // Reset to first page when filters change
   sortProducts();
   renderProducts();
   
@@ -341,6 +682,7 @@ function sortProducts() {
 function resetFilters() {
   filters = {
     categories: [],
+    genres: [],
     priceMin: null,
     priceMax: null,
     ratings: [],
@@ -352,6 +694,7 @@ function resetFilters() {
   document.getElementById('priceMin').value = '';
   document.getElementById('priceMax').value = '';
 
+  currentPage = 1; // Reset to first page
   filteredProducts = [...products];
   sortProducts();
   renderProducts();
@@ -363,6 +706,7 @@ function setupEventListeners() {
   if (sortSelect) {
     sortSelect.addEventListener('change', (e) => {
       currentSort = e.target.value;
+      currentPage = 1; // Reset to first page when sorting
       sortProducts();
       renderProducts();
     });
@@ -381,6 +725,9 @@ function setupEventListeners() {
     applyFiltersBtn.addEventListener('click', () => {
       // Collect filter values
       filters.categories = Array.from(document.querySelectorAll('input[name="category"]:checked'))
+        .map(cb => cb.value);
+      
+      filters.genres = Array.from(document.querySelectorAll('input[name="genre"]:checked'))
         .map(cb => cb.value);
       
       filters.ratings = Array.from(document.querySelectorAll('input[name="rating"]:checked'))
@@ -414,12 +761,11 @@ function setupEventListeners() {
   });
 }
 
-// Initialize on page load
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
+// Initialize on page load (only if catalog page elements exist)
+if (productsGrid) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 }
-
-// Export for use in other scripts
-window.catalogProducts = products;

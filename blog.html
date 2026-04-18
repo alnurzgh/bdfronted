@@ -24,10 +24,7 @@
         <div class="header__progress" id="scrollProgress"></div>
         <div class="container header__container">
             <a href="index.html" class="header__logo">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <rect width="32" height="32" rx="8" fill="black"/>
-                    <path d="M8 12h16M8 16h16M8 20h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                </svg>
+                <img src="logo/image.png" alt="Smart Bookshelf Logo" class="header__logo-img">
                 <span>Smart Bookshelf</span>
             </a>
 
@@ -46,11 +43,11 @@
                     <input type="text" class="header__search-input" placeholder="Поиск в блоге...">
                 </div>
 
-                <button class="header__icon-btn" aria-label="Избранное">
+                <a href="wishlist.html" class="header__icon-btn" aria-label="Избранное">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                     </svg>
-                </button>
+                </a>
 
                 <a href="cart.html" class="header__icon-btn" aria-label="Корзина">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -99,7 +96,15 @@
                 </div>
             </nav>
 
-            <h1 class="blog-page__title">Блог</h1>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-2);">
+                <h1 class="blog-page__title" style="margin-bottom: 0;">Блог</h1>
+                <button class="btn btn--primary" id="createPostBtn">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    Создать пост
+                </button>
+            </div>
             <p class="blog-page__subtitle">Новости, истории клиентов и полезные материалы</p>
 
             <!-- Filter Tabs -->

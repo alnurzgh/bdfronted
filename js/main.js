@@ -227,19 +227,23 @@ class Wishlist {
   }
 
   toggleItem(productId) {
-    const index = this.items.indexOf(productId);
+    // Convert to number if it's a numeric string
+    const id = isNaN(productId) ? productId : parseInt(productId);
+    const index = this.items.findIndex(item => item == id);
+    
     if (index > -1) {
       this.items.splice(index, 1);
       cart.showNotification('Удалено из избранного');
     } else {
-      this.items.push(productId);
+      this.items.push(id);
       cart.showNotification('Добавлено в избранное');
     }
     this.saveWishlist();
   }
 
   isInWishlist(productId) {
-    return this.items.includes(productId);
+    const id = isNaN(productId) ? productId : parseInt(productId);
+    return this.items.some(item => item == id);
   }
 
   updateWishlistButtons() {
@@ -540,32 +544,8 @@ if (heroBanner) {
 // 3D BOOK CARDS INTERACTION
 // ============================================
 
-// Add 3D tilt effect to book cards
-const bookCards = document.querySelectorAll('.product-card');
-
-bookCards.forEach(card => {
-  const imageWrapper = card.querySelector('.product-card__image-wrapper');
-  
-  if (imageWrapper) {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const rotateX = (y - centerY) / 10;
-      const rotateY = (centerX - x) / 10;
-      
-      imageWrapper.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      imageWrapper.style.transform = 'rotateY(0deg) rotateX(0deg)';
-    });
-  }
-});
+// 3D effect is now handled purely by CSS hover states in components.css
+// No mouse tracking needed - books rotate on hover without following cursor
 
 // ============================================
 // INITIALIZATION

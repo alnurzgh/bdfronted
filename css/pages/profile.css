@@ -52,13 +52,14 @@
 }
 
 .profile-tab:hover {
-  color: var(--color-text-primary);
+  color: var(--color-black);
   background: var(--color-gray-50);
 }
 
 .profile-tab.active {
   color: var(--color-black);
   border-bottom-color: var(--color-black);
+  background: var(--color-gray-50);
 }
 
 .profile-tab svg {
