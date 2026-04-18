@@ -177,7 +177,7 @@ async function handleLogin(e) {
   // Redirect after short delay
   setTimeout(() => {
     console.log('✅ Login successful, redirecting...');
-    window.location.href = 'index.html';
+    window.location.href = 'home.html';
   }, 1000);
 }
 
@@ -270,7 +270,7 @@ async function handleSignup(e) {
   // Redirect after short delay
   setTimeout(() => {
     console.log('✅ Signup successful, redirecting...');
-    window.location.href = 'index.html';
+    window.location.href = 'home.html';
   }, 1000);
 }
 
